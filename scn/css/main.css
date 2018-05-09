@@ -1,0 +1,811 @@
+.c1{
+	color: #558fb9;
+}
+.c2{
+	color: #0d8ce4;
+}
+.c3{
+	color: #6a70ed;
+}
+.c4{
+
+}
+.border{
+	border: 1px solid rgba(0,255,255,.4);
+}
+.scale{
+	transform: scale(.8,.8);
+	-webkit-transform: scale(.8,.8) translateX(-12%);
+}
+
+.container{
+	min-width: 1920px;
+	min-height: 1080px;
+	/*background: #fff;*/
+	background: url(../img/bg.png) no-repeat;
+	background-size: cover;
+}
+.hd{
+	margin-bottom: 10px;
+	height: 8.6%;
+	text-align: center;
+}
+.hd img{
+	display: inline-block;
+	height: 100%;
+}
+.content{
+	position: relative;
+	width: 98%;
+	margin: 0 auto;
+}
+.content .col{
+	position: relative;
+	height: 100%;
+}
+.content .col.col-3{
+	width: 31%;
+	margin-right: 1%; 
+}
+.content .col.col-2{
+	width: 49.5%;
+	margin-right: 1%; 
+}
+.content .col.mid{ 
+	width: 38%;
+}
+.content .col.left{ 
+	width: 49%;
+}
+.content .col .wrap{
+	position: relative;
+	width: 100%;
+}
+.content .col .wrap>img{
+	width: 100%;
+}
+.content .col.absformid{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 100%;
+	width: 38%;
+}
+.content .col.absforleft{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 49%;
+}
+/*-------------------------
+	The.clocks
+--------------------------*/
+
+.clock{
+	position:relative;
+	display: inline-block;
+}
+
+.clock:after{
+	content:'';
+	position:absolute;
+	width:400px;
+	height:20px;
+	border-radius:100%;
+	left:50%;
+	margin-left:-200px;
+	bottom:2px;
+	z-index:-1;
+}
+
+
+.clock .display{
+	text-align:center;
+	padding: 40px 20px 20px;
+	border-radius:6px;
+	position:relative;
+	height: 54px;
+}
+
+
+/*-------------------------
+	Light color theme
+--------------------------*/
+
+.clock.light{
+	background-color:#f3f3f3;
+	color:#272e38;
+}
+
+.clock.light:after{
+	box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.clock.light .digits div span{
+	background-color:#272e38;
+	border-color:#272e38;	
+}
+
+.clock.light .digits div.dots:before,
+.clock.light .digits div.dots:after{
+	background-color:#272e38;
+}
+
+.clock.light .alarm{
+	background:url('../img/alarm_light.jpg');
+}
+
+.clock.light .display{
+	background-color:#dddddd;
+	box-shadow:0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #fafafa;
+}
+
+
+/*-------------------------
+	Dark color theme
+--------------------------*/
+.clock.dark{
+	background-color:#272e38;
+	color:#cacaca;
+}
+
+.clock.dark:after{
+	box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.clock.dark .digits div span{
+	background-color:#cacaca;
+	border-color:#cacaca;	
+}
+
+.clock.dark .alarm{
+	background:url('../img/alarm_dark.jpg');
+}
+
+.clock.dark .display{
+	background-color:#0f1620;
+	box-shadow:0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #2d3642;
+}
+
+.clock.dark .digits div.dots:before,
+.clock.dark .digits div.dots:after{
+	background-color:#cacaca;
+}
+
+
+/*-------------------------
+	The Digits
+--------------------------*/
+
+
+.clock .digits div{
+	text-align:left;
+	position:relative;
+	width: 22px;
+	height: 41px;
+	display:inline-block;
+	margin:0 4px;
+}
+
+.clock .digits div span{
+	opacity:0;
+	position:absolute;
+
+	-webkit-transition:0.25s;
+	-moz-transition:0.25s;
+	transition:0.25s;
+}
+
+.clock .digits div span:before,
+.clock .digits div span:after{
+	content:'';
+	position:absolute;
+	width:0;
+	height:0;
+	border:5px solid transparent;
+}
+
+.clock .digits .d1{height: 5px;width:10px;top: 2px;left:6px;background: #00ffff;}
+.clock .digits .d1:before{border-width:0 5px 5px 0;border-right-color:#00ffff;left: -4px;}
+.clock .digits .d1:after{border-width:0 0 5px 5px;border-left-color:#00ffff;right: -4px;}
+
+.clock .digits .d2{height:5px;width:10px;top: 20px;left:6px;background: #00ffff;}
+.clock .digits .d2:before{border-width:3px 4px 2px;border-right-color:#00ffff;left: -7px;}
+.clock .digits .d2:after{border-width:3px 4px 2px;border-left-color:#00ffff;right: -7px;}
+
+.clock .digits .d3{height:5px;width:10px;top: 39px;left:6px;background: #00ffff;}
+.clock .digits .d3:before{border-width:5px 5px 0 0;border-right-color:#00ffff;left: -4px;}
+.clock .digits .d3:after{border-width:5px 0 0 5px;border-left-color:#00ffff;right: -4px;}
+
+.clock .digits .d4{			width:5px;height:10px;top:7px;left:0; background: #00ffff}
+.clock .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:#00ffff;top:-5px;}
+.clock .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:#00ffff;bottom:-5px;}
+
+.clock .digits .d5{			width:5px;height:10px;top:7px;right:0; background: #00ffff}
+.clock .digits .d5:before{border-width:0 0 5px 5px;border-bottom-color:#00ffff;top: -4px;}
+.clock .digits .d5:after{	border-width:5px 0 0 5px;border-top-color:#00ffff;bottom:-5px;}
+
+.clock .digits .d6{width:5px;height:10px;top: 28px;left:0;background: #00ffff;}
+.clock .digits .d6:before{	border-width:0 5px 5px 0;border-bottom-color:#00ffff;top:-5px;}
+.clock .digits .d6:after{	border-width:0 0 5px 5px;border-left-color:#00ffff;bottom:-5px;}
+
+.clock .digits .d7{width:5px;height:10px;top: 28px;right:0;background: #00ffff;}
+.clock .digits .d7:before{	border-width:0 0 5px 5px;border-bottom-color:#00ffff;top:-5px;}
+.clock .digits .d7:after{	border-width:5px 0 0 5px;border-top-color:#00ffff;bottom:-5px;}
+
+
+
+/* 1 */
+
+.clock .digits div.one .d5,
+.clock .digits div.one .d7{
+	opacity:1;
+}
+
+/* 2 */
+
+.clock .digits div.two .d1,
+.clock .digits div.two .d5,
+.clock .digits div.two .d2,
+.clock .digits div.two .d6,
+.clock .digits div.two .d3{
+	opacity:1;
+}
+
+/* 3 */
+
+.clock .digits div.three .d1,
+.clock .digits div.three .d5,
+.clock .digits div.three .d2,
+.clock .digits div.three .d7,
+.clock .digits div.three .d3{
+	opacity:1;
+}
+
+/* 4 */
+
+.clock .digits div.four .d5,
+.clock .digits div.four .d2,
+.clock .digits div.four .d4,
+.clock .digits div.four .d7{
+	opacity:1;
+}
+
+/* 5 */
+
+.clock .digits div.five .d1,
+.clock .digits div.five .d2,
+.clock .digits div.five .d4,
+.clock .digits div.five .d3,
+.clock .digits div.five .d7{
+	opacity:1;
+}
+
+/* 6 */
+
+.clock .digits div.six .d1,
+.clock .digits div.six .d2,
+.clock .digits div.six .d4,
+.clock .digits div.six .d3,
+.clock .digits div.six .d6,
+.clock .digits div.six .d7{
+	opacity:1;
+}
+
+
+/* 7 */
+
+.clock .digits div.seven .d1,
+.clock .digits div.seven .d5,
+.clock .digits div.seven .d7{
+	opacity:1;
+}
+
+/* 8 */
+
+.clock .digits div.eight .d1,
+.clock .digits div.eight .d2,
+.clock .digits div.eight .d3,
+.clock .digits div.eight .d4,
+.clock .digits div.eight .d5,
+.clock .digits div.eight .d6,
+.clock .digits div.eight .d7{
+	opacity:1;
+}
+
+/* 9 */
+
+.clock .digits div.nine .d1,
+.clock .digits div.nine .d2,
+.clock .digits div.nine .d3,
+.clock .digits div.nine .d4,
+.clock .digits div.nine .d5,
+.clock .digits div.nine .d7{
+	opacity:1;
+}
+
+/* 0 */
+
+.clock .digits div.zero .d1,
+.clock .digits div.zero .d3,
+.clock .digits div.zero .d4,
+.clock .digits div.zero .d5,
+.clock .digits div.zero .d6,
+.clock .digits div.zero .d7{
+	opacity:1;
+}
+
+
+/* The dots */
+
+.clock .digits div.dots{
+	width:5px;
+}
+
+.clock .digits div.dots:before,
+.clock .digits div.dots:after{
+	width:5px;
+	height:5px;
+	content:'';
+	position:absolute;
+	left:0;
+	top:14px;
+}
+
+.clock .digits div.dots:after{
+	top:34px;
+}
+
+
+/*-------------------------
+	The Alarm
+--------------------------*/
+
+
+.clock .alarm{
+	width:16px;
+	height:16px;
+	bottom:20px;
+	background:url('../img/alarm_light.jpg');
+	position:absolute;
+	opacity:0.2;
+}
+
+.clock .alarm.active{
+	opacity:1;
+}
+
+
+/*-------------------------
+	Weekdays
+--------------------------*/
+
+
+.clock .weekdays{
+	font-size:12px;
+	position:absolute;
+	width:100%;
+	top:10px;
+	left:0;
+	text-align:center;
+}
+
+
+.clock .weekdays span{
+	opacity:0.2;
+	padding:0 10px;
+}
+
+.clock .weekdays span.active{
+	opacity:1;
+}
+
+/*map*/
+.mapBox{
+	width: 55%;
+	position: relative;
+}
+.mapBox>span{
+	display: block;
+	position: absolute;
+	cursor: pointer;
+	display:table-cell;
+	vertical-align:middle;
+	text-align: center;
+}
+.mapBox span.chenguan{
+	/*width: 60px;
+	height: 20px;
+	top: 213px;
+	left: 158px;*/
+	width: 15%;
+	height: 4%;
+	top: 41%;
+	left: 39%;
+	transform:rotate(25deg);
+	 -ms-transform:rotate(25deg);/* 	IE 9 */
+	-moz-transform:rotate(25deg); 	/* Firefox */
+	 -webkit-transform:rotate(25deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(25deg); 
+	
+}
+.mapBox span.dongming{
+	/*width: 25px;
+	height: 20px;
+	top: 196px;
+	left: 205px;*/
+	width: 7.25%;
+	height: 4%;
+	top: 37.43%;
+	left: 50.61%;
+}
+.mapBox span.duguanzhen{
+	/*width: 50px;
+	height: 125px;
+	top: 55px;
+	left: 230px;*/
+	width: 12.5%;
+	height: 25%;
+	top: 10.78%;
+	left: 56.79%;
+	transform:rotate(-25deg);
+	 -ms-transform:rotate(-25deg);/* 	IE 9 */
+	-moz-transform:rotate(-25deg); 	/* Firefox */
+	 -webkit-transform:rotate(-25deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(-25deg); 
+}
+
+.mapBox span.fanlizhen{
+	/*width: 50px;
+	height: 125px;
+	top: 127px;
+	left: 327px;*/
+	width: 12.5%;
+	height: 25%;
+	top: 24.90%;
+	left: 80.74%;
+	transform:rotate(-55deg);
+	 -ms-transform:rotate(-55deg);/* 	IE 9 */
+	-moz-transform:rotate(-55deg); 	/* Firefox */
+	 -webkit-transform:rotate(-55deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(-55deg); 
+}
+.mapBox span.guandaokou{
+	/*width: 75px;
+	height: 45px;
+	top: 20px;
+	left: 235px;*/
+	width: 18.75%;
+	height: 9%;
+	top: 3.92%;
+	left: 58.02%;
+	transform:rotate(20deg);
+	 -ms-transform:rotate(20deg);/* 	IE 9 */
+	-moz-transform:rotate(20deg); 	/* Firefox */
+	 -webkit-transform:rotate(20deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(20deg); 
+}
+
+.mapBox span.guanpo{
+	/*width: 120px;
+	height: 45px;
+	top: 300px;
+	left: 0px;*/
+	width: 30%;
+	height: 9%;
+	top: 58.82%;
+	left: 0%;
+	transform:rotate(20deg);
+	 -ms-transform:rotate(20deg);/* 	IE 9 */
+	-moz-transform:rotate(20deg); 	/* Firefox */
+	 -webkit-transform:rotate(20deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(20deg); 
+}
+.mapBox span.hengtong{
+	/*width: 70px;
+	height: 60px;
+	top: 225px;
+	left: 207px;*/
+	width: 17.5%;
+	height: 12%;
+	top: 44.12%;
+	left: 51.11%;
+	transform:rotate(45deg);
+	 -ms-transform:rotate(45deg);/* 	IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	 -webkit-transform:rotate(45deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(45deg); 
+}
+.mapBox span.mutong{
+	/*width: 93px;
+	height: 80px;
+	top: 145px;
+	left: 9px;*/
+	width: 23.25%;
+	height: 16%;
+	top: 28.43%;
+	left: 2.22%;
+}
+.mapBox span.panhe{
+	/*width: 40px;
+	height: 90px;
+	top: 145px;
+	left: 107px;*/
+	width: 10%;
+	height: 18%;
+	top: 28.43%;
+	left: 26.42%;
+}
+.mapBox span.shahe{
+	/*width: 80px;
+	height: 160px;
+	top: 34px;
+	left: 144px;*/
+	width: 20%;
+	height: 32%;
+	top: 6.67%;
+	left: 35.56%;
+	transform:rotate(-20deg);
+	 -ms-transform:rotate(-20deg);/* 	IE 9 */
+	-moz-transform:rotate(-20deg); 	/* Firefox */
+	 -webkit-transform:rotate(-20deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(-20deg); 
+}
+
+.mapBox span.shizi{
+	/*width: 100px;
+	height: 45px;
+	top: 361px;
+	left: 122px;*/
+	width: 25%;
+	height: 9%;
+	top: 70.79%;
+	left: 30.12%;
+}
+
+.mapBox span.shuangkui{
+	/*width: 55px;
+	height: 65px;
+	top: 294px;
+	left: 143px;*/
+	width: 13.75%;
+	height: 13%;
+	top: 57.65%;
+	left: 35.31%;
+		transform:rotate(20deg);
+	 -ms-transform:rotate(20deg);/* 	IE 9 */
+	-moz-transform:rotate(20deg); 	/* Firefox */
+	 -webkit-transform:rotate(20deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(20deg); 
+}
+
+.mapBox span.shuanglong{
+	/*width: 55px;
+	height: 58px;
+	top: 236px;
+	left: 143px;*/
+	width:13.75%;
+	height: 11.6%;
+	top: 46.27%;
+	left:35.31%;
+}
+.mapBox span.shuanglong .shuanglong2{
+	position: absolute;
+	width:50%;
+	height: 110%;
+	top: 26%;
+	left:-57%;
+	transform:rotate(35deg);
+	 -ms-transform:rotate(35deg);/* 	IE 9 */
+	-moz-transform:rotate(35deg); 	/* Firefox */
+	 -webkit-transform:rotate(35deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(35deg); 
+}
+.mapBox span.tanghe{
+	/*width: 55px;
+	height: 85px;
+	top: 279px;
+	left: 267px;*/
+	width:13.75%;
+	height: 17%;
+	top: 54.71%;
+	left:65.93%;
+}
+.mapBox span.tanghe .tanghe2{
+	position: absolute;
+	width:54%;
+	height: 60%;
+	top: 0%;
+	left:-100%;
+}
+.mapBox span.wayao{
+	/*width: 170px;
+	height: 85px;
+	top: 420px;
+	left: 120px;*/
+	width:42.5%;
+	height: 17%;
+	top: 80.35%;
+	left:29.63%;
+	transform:rotate(7deg);
+	 -ms-transform:rotate(7deg);/* 	IE 9 */
+	-moz-transform:rotate(7deg); 	/* Firefox */
+	 -webkit-transform:rotate(7deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(7deg); 
+}
+
+.mapBox span.wenyu{
+/*	width: 130px;
+	height: 65px;
+	top: 204px;
+	left: 243px;*/
+	width:32.5%;
+	height: 13%;
+	top: 40%;
+	left:59.27%;
+	transform:rotate(50deg);
+	 -ms-transform:rotate(50deg);/* 	IE 9 */
+	-moz-transform:rotate(50deg); 	/* Firefox */
+	 -webkit-transform:rotate(50deg); /*Safari å’Œ Chrome */
+	-o-transform:rotate(50deg); 
+}
+.mapBox span.wulichuan{
+	/*width: 38px;
+	height: 38px;
+	top: 340px;
+	left: 220px;*/
+	width:9.5%;
+	height: 7.6%;
+	top: 66.67%;
+	left:53.66%;
+}
+.mapBox span.xujia{
+	/*width: 65px;
+	height: 67px;
+	top: 227px;
+	left: 40px;*/
+	width:16.25%;
+	height: 13.4%;
+	top: 44.51%;
+	left:10%;
+}
+.mapBox span.zhuyao{
+	/*width: 56px;
+	height: 60px;
+	top: 370px;
+	left: 257px;*/
+	width: 14%;
+	height: 12%;
+	top: 72.55%;
+	left: 63.56%;
+}
+
+@keyframes warn {  
+    0% {  
+        transform: scale(0);  
+        opacity: 0.0;  
+    }  
+    25% {  
+        transform: scale(0);  
+        opacity: 0.1;  
+    }  
+    50% {  
+        transform: scale(0.1);  
+        opacity: 0.3;  
+    }  
+    75% {  
+        transform: scale(0.5);  
+        opacity: 0.5;  
+    }  
+    100% {  
+        transform: scale(1);  
+        opacity: 0.0;  
+    }  
+}  
+@-webkit-keyframes "warn" {  
+    0% {  
+        -webkit-transform: scale(0);  
+        opacity: 0.0;  
+    }  
+    25% {  
+        -webkit-transform: scale(0);  
+        opacity: 0.1;  
+    }  
+    50% {  
+        -webkit-transform: scale(0.1);  
+        opacity: 0.3;  
+    }  
+    75% {  
+        -webkit-transform: scale(0.5);  
+        opacity: 0.5;  
+    }  
+    100% {  
+        -webkit-transform: scale(1);  
+        opacity: 0.0;  
+    }  
+}  
+  
+.anmit{
+	width: 20px;
+	height: 20px;
+	position: relative;
+	display:inline-block;
+	top: 30%;
+}
+.chenguan .anmit,.dongming .anmit{
+	top: 0;
+}
+.shahe .anmit,.duguanzhen .anmit{
+	top: 50%;
+}
+/* ä¿æŒå¤§å°ä¸å˜çš„å°åœ†åœˆ  */  
+.dot {  
+    position: absolute;  
+    width: 30%;  
+    height: 30%;  
+    left: 7px;  
+    top: 7px;  
+    -webkit-border-radius: 20px;  
+    -moz-border-radius: 20px;  
+    background: #f0f0f0;
+    border-radius: 20px;  
+    z-index: 2;  
+}  
+/* äº§ç”ŸåŠ¨ç”»ï¼ˆå‘å¤–æ‰©æ•£å˜å¤§ï¼‰çš„åœ†åœˆ  */  
+.pulse {  
+    position: absolute;  
+    width: 20px;   
+    height: 20px;  
+    left: -10px;  
+    top: -10px;  
+    border: 10px solid #fff;  
+    -webkit-border-radius: 50%;  
+    -moz-border-radius: 50%;  
+    border-radius: 50%;  
+    z-index: 1;  
+    opacity: 0;  
+    -webkit-animation: warn 2s ease-out;  
+    -moz-animation: warn 2s ease-out;  
+    animation: warn 2s ease-out;  
+    -webkit-animation-iteration-count: infinite;  
+    -moz-animation-iteration-count: infinite;  
+    animation-iteration-count: infinite;  
+}  
+
+/*å±•ç¤ºä¿¡æ¯*/
+.information{
+	width: 50%;
+	color: #f8f8f8;
+	padding: 5% 3%;
+	background: rgba(0,0,0,.4);
+	position: absolute;
+	bottom: -70px;
+	right: -10%;
+	display: none;
+	height:20%;
+}
+.information h4{
+	line-height: 25%;
+	font-size: 1vw;
+	text-align: center;
+	font-weight: 500;
+	height: 25%;
+}
+.information p{
+	width: 100%;
+	font-size: 0.5vw;
+	line-height: 20%;
+	height: 20%;
+}
+.information p span{
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+}
+.information p b{
+	display: inline-block;
+	width: 50%;
+	font-weight: 500;
+}

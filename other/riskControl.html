@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>风险防控系统</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body{
+            margin: 0;
+            background:url(./images/bodyBg.jpg) 50% 50%;
+        }
+        #screenShow{
+            padding: 0 10px;
+        }
+        .header{
+            position: relative;
+            height: 60px;
+        }
+        .header img{
+            position: absolute;
+            left:35%;
+            top:-22px;
+            width: 550px;
+            height: 65px;
+        }
+        .header h1{
+            text-align: center;
+            font-weight: 600;
+            line-height: 17px;
+            color: #7ee1fd;
+        }
+        .contain{
+            display: flex;
+            height: 100%;
+            margin-top: 5px;
+        }
+        .contain .container-left{
+            flex:1;
+        }
+        .contain .container-center{
+            flex:2;   
+            margin: 0 10px;        
+        }
+        .contain .container-right{
+            flex:1;
+        }
+        .contain .container-left .trend{
+            height: 300px;
+            border: 1px solid #047ead;
+            box-shadow:0px 0px 2px 2px #047ead inset;         
+            
+            padding: 0 8px;
+        }
+        .contain .container-left .classification{
+            height: 300px;
+            margin-top: 5px;   
+            border: 1px solid #047ead;
+            box-shadow:0px 0px 2px 2px #047ead inset;         
+            
+            padding:6px 8px;           
+        }
+        .contain .container-left .where{
+            height: 200px;
+            border: 1px solid #047ead;
+            box-shadow:0px 0px 2px 2px #047ead inset;         
+            
+            margin: 25px 0; 
+            padding:0 8px;           
+        }
+        .contain .container-right{
+            border: 1px solid #047ead;
+            box-shadow:0px 0px 2px 2px #047ead inset;         
+            padding:0 8px;
+        }
+        .container-center .top{
+            display: flex;
+        }
+        .container-center .top div{
+            flex:1;
+            border:1px solid #047ead;
+            box-shadow:0px 0px 2px 2px #047ead inset;                     
+            margin-right: 27px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .container-center .top div:nth-child(3){
+            margin-right: 0;
+        }
+        .container-center .top div p:nth-child(1){
+            font-size: 14px;
+            color: #fff;
+            margin: 0;
+            margin-top: 15px;
+        }
+        .container-center .top div p:nth-child(2){
+            font-size: 35px;
+            color: #2ef8f6;
+            margin: 0;      
+            margin-bottom: 15px;      
+        }
+        .container-center .middle{
+            height:430px;
+            margin:15px 0;
+            background: url('./images/bj.png') center center no-repeat;
+            background-size: 110%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="screenShow">
+        <div class="header">
+            <img src="./images/head.png" alt="">
+            <h1>风险防控系统数据概览</h1>
+        </div>
+        <div class="contain">
+            <div class="container-left">
+                <div class="trend">
+                    
+                </div>
+                <div class="where" style="position: relative;">
+                    <span style="position: absolute;left: 15px;top:20px;color: #8ed1ff;font-size: 18px;font-weight: 600;">贷款资金去向</span>
+                    <div id="one" style="width: 110px;height: 200px;margin: 0;display: inline-block;"></div>
+                    <div id="two" style="width: 110px;height: 200px;margin: 0;display: inline-block;"></div>
+                    <div id="three" style="width: 110px;height: 200px;margin: 0;display: inline-block;"></div>
+                </div>
+                <div class="classification">
+                    
+                </div>
+            </div>
+            <div class="container-center">
+                <div class="top" style="height:97px;">
+                    <div>
+                        <p>正常还款金额</p>
+                        <p>1193400</p>
+                    </div>
+                    <div>
+                        <p>逾期金额</p>              
+                        <p>3400</p>              
+                    </div>
+                    <div>
+                        <p>不良金额</p>              
+                        <p>11400</p>              
+                    </div>
+                </div>
+                <div class="middle"></div>
+                <div class="bottom" style="height:300px;"></div>
+            </div>
+            <div class="container-right">
+                
+            </div>
+        </div>
+    </div>
+    <script src="./echarts//echarts.min.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+ // 基于准备好的dom，初始化echarts实例
+ var myChart = echarts.init(document.getElementsByClassName('trend')[0]);
+
+// 指定图表的配置项和数据
+option = {
+    title: {
+        text: '全县2017年贷款走势',
+        textStyle: {
+            fontSize: 18,
+            fontWeight: 'bolder',
+            color: '#8ed1ff'// 主标题文字颜色
+        },
+        top:'6%'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data: ['正常还款', '逾期未还', '不良贷款', '逾期催回'],
+        icon:"circle",
+        textStyle: {
+            color: "#fff"
+        },
+        align:"auto",
+        top:"6%",
+        right:"2%",
+        width:200
+    },
+    grid: {
+        left: '3%',
+        right: '3%',
+        top:'40%',
+        bottom: '10%',
+        containLabel: true
+    },
+    xAxis: [{
+        type: 'category',
+        data: ['Q1', 'Q2', 'Q3', 'Q4'],
+        axisLine:{  
+            lineStyle:{  
+                color:'#6a6a6b',  
+                width:1
+            }  
+        }  
+    }],
+    yAxis: [{
+        splitLine: {
+            show: true, 
+            //  改变轴线颜色
+            lineStyle: {
+                // 使用深浅的间隔色
+                color: '#6a6a6b'
+            }                            
+        },
+        type: 'value',
+        data: [50,100,150,200],
+        name: '单位(万元)',
+        axisLabel: {
+            formatter: '{value}'
+        },
+        axisLine:{  
+            lineStyle:{  
+                color:'#6a6a6b',  
+                width:1
+            }  
+        } 
+    }],
+    series: [{
+        name: '正常还款',
+        type: 'bar',
+        data: [200,200,200,200],
+        color:'#00ffff'
+    }, {
+        name: '逾期未还',
+        type: 'bar',
+        data: [70, 70, 70,70],
+        color:"#25c3ea"
+    }, {
+        name: '不良贷款',
+        type: 'bar',
+        data: [40,40,40,40],
+        color:"#005aff"
+    }, {
+        name: '逾期催回',
+        type: 'bar',
+        data: [60,60,60,60],
+        color:"#81f29c"
+    }]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+
+// var asd =document.getElementsByClassName('where')[0];
+var asd = document.getElementById('one');
+        var pieChartOne = echarts.init(asd);
+        var labelTop = {//上层样式
+            normal : {
+                color :'#1b87e8',
+                label : {
+                    show : true,
+                    position : 'center',
+                    formatter : '{b}',
+                    textStyle: {
+                        baseline : 'bottom',
+                        fontSize:20
+                    }
+                },
+                labelLine : {
+                    show : false
+                }
+            }
+        };
+        var labelFromatter = {//环内样式
+            normal : {//默认样式
+                label : {//标签
+                    formatter : function (a,b,c){return 100 - c + '%'},
+                    // labelLine.length：30,  //线长，从外边缘起计算，可为负值
+                    textStyle: {//标签文本样式
+                        color:'black',
+                        align :'center',
+                        baseline : 'top'//垂直对其方式
+                    }
+                }
+            },
+        };
+        var labelBottom = {//底层样式
+            normal : {
+                color: '#68d6fb',
+                label : {
+                    show : true,
+                    position : 'center',
+                    fontSize:20
+                },
+                labelLine : {
+                    show : false
+                }
+            },
+            emphasis: {//悬浮式样式
+                color: 'rgba( 0,0,0,0)'
+            }
+        };
+
+        var pieChartOneOption = {
+            title : {
+                // text: '贷款资金去向',
+                subtext: '生态旅游/电子商务',
+                x:'left',
+                //正标题样式
+                // textStyle: {
+                //     fontSize:20,
+                //     fontFamily:'Arial',
+                //     fontWeight:600,
+                //     color:'#77b1df',
+                // },
+                //副标题样式
+                subtextStyle: {
+                    fontSize:10,
+                    fontFamily:'Arial',
+                    color:"#77b0df",
+                },
+                bottom:'10%',
+                left:'center'                
+            },
+            animation:false,
+            tooltip : {         // 提示框. Can be overwrited by series or data
+                trigger: 'axis',
+                //show: true,   //default true
+                showDelay: 0,
+                hideDelay: 50,
+                transitionDuration:0,
+                borderRadius : 8,
+                borderWidth: 2,
+                padding: 10,    // [5, 10, 15, 20]
+            },
+            series : [
+                {
+                    type : 'pie',
+                    center : ['50%', '55%'],//圆心坐标（div中的%比例）
+                    radius : ['60%', '70%'],
+                    x: '0%', // for funnel
+                    itemStyle : labelTop,//graphStyleA,//图形样式 // 当查到的数据不存在（并非为0），此属性隐藏
+                    data : [
+                        {name:'', value:92.1,itemStyle : labelBottom},
+                        {name:'7.9%', value:7.9, itemStyle : labelTop}
+                    ]
+                }
+            ]
+        };
+        pieChartOne.setOption(pieChartOneOption);
+
+    var asd2 = document.getElementById('two');
+    var pieChartTwo = echarts.init(asd2);
+    var labelTop = {//上层样式
+        normal : {
+            color :'#1b87e8',
+            label : {
+                show : true,
+                position : 'center',
+                formatter : '{b}',
+                textStyle: {
+                    baseline : 'bottom',
+                    fontSize:20
+                }
+            },
+            labelLine : {
+                show : false
+            }
+        }
+    };
+    var labelFromatter = {//环内样式
+        normal : {//默认样式
+            label : {//标签
+                formatter : function (a,b,c){return 100 - c + '%'},
+                // labelLine.length：30,  //线长，从外边缘起计算，可为负值
+                textStyle: {//标签文本样式
+                    color:'black',
+                    align :'center',
+                    baseline : 'top'//垂直对其方式
+                }
+            }
+        },
+    };
+    var labelBottom = {//底层样式
+        normal : {
+            color: '#68d6fb',
+            label : {
+                show : true,
+                position : 'center',
+                fontSize:20
+            },
+            labelLine : {
+                show : false
+            }
+        },
+        emphasis: {//悬浮式样式
+            color: 'rgba( 0,0,0,0)'
+        }
+    };
+
+    var pieChartOneOption = {
+        title : {
+            // text: '贷款资金去向',
+            subtext: '特色工业',
+            x:'left',
+            //正标题样式
+            // textStyle: {
+            //     fontSize:20,
+            //     fontFamily:'Arial',
+            //     fontWeight:600,
+            //     color:'#77b1df',
+            // },
+            //副标题样式
+            subtextStyle: {
+                fontSize:10,
+                fontFamily:'Arial',
+                color:"#77b0df",
+            },
+            bottom:'10%',
+            left:'center'            
+        },
+        animation:false,
+        tooltip : {         // 提示框. Can be overwrited by series or data
+            trigger: 'axis',
+            //show: true,   //default true
+            showDelay: 0,
+            hideDelay: 50,
+            transitionDuration:0,
+            borderRadius : 8,
+            borderWidth: 2,
+            padding: 10,    // [5, 10, 15, 20]
+        },
+        series : [
+            {
+                type : 'pie',
+                center : ['50%', '55%'],//圆心坐标（div中的%比例）
+                radius : ['60%', '70%'],
+                x: '0%', // for funnel
+                itemStyle : labelTop,//graphStyleA,//图形样式 // 当查到的数据不存在（并非为0），此属性隐藏
+                data : [
+                    {name:'', value:79.2,itemStyle : labelBottom},
+                    {name:'20.8%', value:20.8, itemStyle : labelTop}
+                ]
+            }
+        ]
+    };
+    pieChartTwo.setOption(pieChartOneOption);
+
+    var asd3 = document.getElementById('three');
+    var pieChartThree = echarts.init(asd3);
+    var labelTop = {//上层样式
+        normal : {
+            color :'#1b87e8',
+            label : {
+                show : true,
+                position : 'center',
+                formatter : '{b}',
+                textStyle: {
+                    baseline : 'bottom',
+                    fontSize:20
+                }
+            },
+            labelLine : {
+                show : false
+            }
+        }
+    };
+    var labelFromatter = {//环内样式
+        normal : {//默认样式
+            label : {//标签
+                formatter : function (a,b,c){return 100 - c + '%'},
+                // labelLine.length：30,  //线长，从外边缘起计算，可为负值
+                textStyle: {//标签文本样式
+                    color:'black',
+                    align :'center',
+                    baseline : 'top'//垂直对其方式
+                }
+            }
+        },
+    };
+    var labelBottom = {//底层样式
+        normal : {
+            color: '#68d6fb',
+            label : {
+                show : true,
+                position : 'center',
+                fontSize:20
+            },
+            labelLine : {
+                show : false
+            }
+        },
+        emphasis: {//悬浮式样式
+            color: 'rgba( 0,0,0,0)'
+        }
+    };
+
+    var pieChartOneOption = {
+        title : {
+            // text: '贷款资金去向',
+            subtext: '绿色农业',
+            x:'left',
+            //正标题样式
+            // textStyle: {
+            //     fontSize:20,
+            //     fontFamily:'Arial',
+            //     fontWeight:600,
+            //     color:'#77b1df',
+            // },
+            //副标题样式
+            subtextStyle: {
+                fontSize:10,
+                fontFamily:'Arial',
+                color:"#77b0df",
+            },
+            bottom:'10%',
+            left:'center'
+        },
+        animation:false,
+        tooltip : {         // 提示框. Can be overwrited by series or data
+            trigger: 'axis',
+            //show: true,   //default true
+            showDelay: 0,
+            hideDelay: 50,
+            transitionDuration:0,
+            borderRadius : 8,
+            borderWidth: 2,
+            padding: 10,    // [5, 10, 15, 20]
+        },
+        series : [
+            {
+                type : 'pie',
+                center : ['50%', '55%'],//圆心坐标（div中的%比例）
+                radius : ['60%', '70%'],
+                x: '0%', // for funnel
+                itemStyle : labelTop,//graphStyleA,//图形样式 // 当查到的数据不存在（并非为0），此属性隐藏
+                data : [
+                    {name:'', value:84.7,itemStyle : labelBottom},
+                    {name:'15.3%', value:15.3, itemStyle : labelTop}
+                ]
+            }
+        ]
+    };
+    pieChartThree.setOption(pieChartOneOption);
+
+var myChart = echarts.init(document.getElementsByClassName('classification')[0]);
+option = {
+    title: {
+    text: '垫付主体分类',
+        textStyle: {
+            fontSize: 18,
+            fontWeight: 'bolder',
+            color: '#8ed1ff'// 主标题文字颜色
+        },
+        top:'6%'
+    },
+    color: ["#0d8ce4", "#00ffff"],
+    legend: {
+        data: ['正常还款', '不良贷款'],
+        icon:"circle",
+        align:"auto",
+        top:"6%",
+        right:"2%",
+        width:100
+    },
+    grid: {
+        top:'35%'
+    },
+    xAxis: [{
+        show:false
+    }],
+    yAxis: [{
+        show:false, 
+        type: 'category',
+    }],
+    series: [{
+        name: '不良贷款',
+        type: 'bar',
+        stack: '总量',
+        data: [{value:241,name:'3098w'},{value:274,name:'5645w'},{value: 290,name:'6645w'}, {value:250,name: '7645w'},{value: 380,name:'8645w'}],
+        label: {
+            normal: {
+                show: true,
+                position: 'right',
+                formatter: function(data) {
+                    var result ='';
+                    result= data.data.name;
+                    return result;
+                },
+                width:50,
+                fontSize:9
+            }
+        }
+    }, {
+        name: '正常还款',
+        type: 'bar',
+        stack: '总量',
+        data: [{value:-101,name:'保险公司 9%'},{value:-134,name:'省担保 18%'},{value: -290,name:'省农信担保 22%'}, {value:-230,name: '银行 25%'},{value: -310,name:'县政府 26%'}],
+        label: {
+            normal: {
+                show: true,
+                position: 'left',
+                formatter: function(data) {
+                    var result ='';
+                    result= data.data.name;
+                    return result;
+                },
+                width:50,
+                fontSize:9
+            }
+        },
+    }]
+};
+myChart.setOption(option);
+
+var bad = echarts.init(document.getElementsByClassName('bottom')[0]);
+badOption ={
+    title: {
+        text: '不良率排行榜',
+        textStyle: {
+            fontSize: 14,
+            color: '#69e0e1'// 主标题文字颜色
+        }
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    grid: {
+        left: '3%',
+        right: '5%',
+        top:'22%',
+        bottom: '10%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','范里镇','沙河镇','沙河镇','范里镇','徐家湾乡'],
+        axisLine:{  
+            lineStyle:{  
+                color:'#686b7a',  
+                width:1
+            }  
+        },
+        axisLabel: { //坐标轴刻度标签的相关设置。
+				interval: 0,//设置为 1，表示『隔一个标签显示一个标签』
+			    rotate:-30,
+				textStyle: {
+					color: '#5282ab',
+					fontStyle: 'normal',
+				}
+		}
+    },
+    yAxis: {
+        name: '单位(万元)',
+        type: 'value',
+        splitLine: {show: false},
+        axisLabel: {
+            formatter: '{value}',
+            textStyle: {
+					color: '#5282ab',
+					fontStyle: 'normal',
+				}
+        },
+        axisLine:{  
+            lineStyle:{  
+                color:'#686b7a',  
+                width:1
+            }  
+        } ,
+        seriesIndex: 0,
+        min: 0,
+        max: 300,
+        splitLine: {
+            show: true,
+            lineStyle:{  
+                color:'#686b7a'
+            }  
+        }
+    },
+    series: [
+        {
+            name:'',
+            color: ['#337ae4'],
+            type:'line',
+            itemStyle : {
+                normal : {
+                    lineStyle:{
+                        width:3,//折线宽度
+                    },
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 1,
+                    color: '#375ba6' // 0% 处的颜色
+                }, {
+                    offset: 0,
+                    color: '#67b7c8' // 100% 处的颜色
+                }], false),
+                opacity: 0.4
+                }
+            },
+            data:[150,110,151,210,160,190,160,180,150,140,120,130,90,152,140,210,170,150,170]         
+        }
+        
+    ]
+}
+bad.setOption(badOption);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <script src="d3.min.js"></script>
+    <script>
+        // var body = d3.select("body");
+        // var p = body.select('p');
+        var p = d3.select('p');        
+        var str = "China";
+        p.datum(str);//仅仅只是绑定数据，没有做显示操作
+        p.text(function(d, i){
+            return "第 "+ i + " 个元素绑定的数据是 " + d;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.xy .clk{
+			transform: scale(.7,.7);
+		}
+		#circle1,#circle2{
+			width: 220px;
+			height: 220px;
+			padding: 10px;
+		}
+		#line{
+			height: 220px;
+			width: 45%;
+			margin-right: 2%;
+		}
+		#chart2{
+			height: 90%;
+			width: 100%;
+		}
+		#pie1,#pie2{
+			height: 220px;
+			width: 50%;
+		}
+		.xy .piewrap{
+			width: 53%;
+		}
+		.information{
+		    width: 30%;
+		    color: #f8f8f8;
+		    padding: 5% 3%;
+		    background: rgba(0,0,0,.4);
+		    position: absolute;
+		    bottom: 10%;
+		    right: -5%;
+		    display: none;
+		    height: 25%;
+		}
+		.xy .innerbox .tit{
+			position: absolute;
+			left: 5%;
+			top: 10%;
+			color: #fff;
+			font-size: 22px;
+			font-weight: bold;
+			color: #82c0eb;
+			z-index: 9999;
+		}
+		.xy .innerbox img{
+			width: 100%;
+		}
+		.xy .innerbox{
+			position: relative;
+		}
+		.xy .innerbox .layerbox{
+			position: absolute;
+			width: 100%;
+		}
+		.xy .innerbox .layer{
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			transform: translateY(-35%);
+		}
+		.xy .innerbox .layer .tit{
+			position: absolute;
+			left: 5%;
+			top: 10%;
+			color: #fff;
+			font-size: 22px;
+			font-weight: bold;
+			color: #82c0eb;
+			z-index: 9999;
+		}
+		.xy .innerbox .layer .item{
+			width: 33%;
+		}
+		.xy .innerbox .layer .item .c {
+			position: relative;
+		}
+		.xy .innerbox .layer .item .c .num{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #2ae7e5;
+		}
+		.xy .innerbox .layer .item .c img{
+			max-width: 100%;
+		}
+		.xy .innerbox .layer .item .t{
+			color: #82c0eb;
+			font-size: 14px;
+		}
+		.xy .col .table {
+			background: rgba(0,0,0,.2);
+			margin-bottom: 1.5%;
+		}
+		.xy .col .table .item{
+			padding: 10px 0;
+		}
+		.xy .col .table .item:nth-child(even) {
+			background: rgba(255,255,255,.1);
+		}
+		.xy .col .table .item:nth-child(odd) .it{
+			color: #558fb9;
+		}
+		.xy .col .table .item .it{
+			width:  20%;
+			font-size: 14px;
+			text-align: center;
+			color: rgba(255,255,255,.7);
+		}
+		.xy .col .table .item .it.h{
+			color: #00ffff;
+		}
+		.xy .col.r-section .linebox{
+			position: relative;
+		}
+		.xy .col .linebox .layer{
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+		}
+		.xy .r-section .secondbox{
+			margin-bottom: 1.5%;
+		}
+		.xy .r-section .thirdbox{
+			position: relative;
+		}
+		.xy .r-section .thirdbox .layer{
+			position: absolute;
+			left: 0;
+			top: 5%;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container xy">
+		<div class="hd">
+			<img src="img/t1.png" alt="">
+		</div>
+		<div class="content dis-box align-items-top">
+			<div class="col col-2 left"></div> <!--占位-->
+			<div class="col col-2 absforleft l-section">
+				<div class="dis-box justify-content-around">
+					<div>
+						<div class="fs16 ta-c pb-10">AAA+户数</div>
+						<div class="clk clk_one"></div>
+					</div>
+					<div>
+						<div class="fs16 ta-c pb-10">AAA户数</div>
+						<div class="clk clk_two"></div>
+					</div>
+					<div>
+						<div class="fs16 ta-c pb-10">AA户数</div>
+						<div class="clk clk_three"></div>
+					</div>
+					<div>
+						<div class="fs16 ta-c pb-10">A户数</div>
+						<div class="clk clk_four"></div>
+					</div>
+					<div>
+						<div class="fs16 ta-c pb-10">无信用户数</div>
+						<div class="clk clk_five"></div>
+					</div>
+				</div>
+				<div class="dis-box justify-content-around">
+					<div class="">
+						<div id="circle1" class="border mb-20"></div>
+						<div id="circle2" class="border"></div>
+					</div>
+
+					<div class="mapBox">
+						<img src="img/ditu.png" width="100%" />
+						<span class="chenguan" title="城关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="dongming" title="东明镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="duguanzhen" title="杜关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="fanlizhen" title="范里镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guandaokou" title="官道口镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guanpo"  title="官坡镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="hengtong" title="横涧乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="mutong" title="木桐乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="panhe" title="潘河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shahe" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shizi" title="狮子坪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuangkui" title="双槐树乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuanglong" title="双龙湾镇">
+							<div class="shuanglong2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="tanghe" title="汤河乡">
+							<div class="tanghe2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wayao" title="瓦窖沟">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wenyu" title="文峪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wulichuan" title="五里川镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="xujia" title="徐家湾">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="zhuyao" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<div class="information">
+							<h4>沙河乡</h4>
+							<p>贷款总金额：103000 元</p>
+							<p>合作社贷：300 家</p>
+							<p>农户贷：2000 户</p>
+							<p>企业贷：100 家</p>
+						</div>
+					</div>
+				</div>	
+				<div class="innerbox">
+					<img src="img/21.png" alt="">
+					<div class="lay dis-box">
+						<div class="tit">信用等级比例</div>
+						<div class="layer dis-box justify-content-around">
+							<div class="item dis-box flex-direction-column">
+								<div class="c ta-c">
+									<img src="img/c1.png" alt="">
+									<div class="num dis-box flex-direction-column">
+										<span class="fs24">6.3</span>
+										<span class="fs14">%</span>
+									</div>
+								</div>
+								<div class="t">AAA+</div>
+							</div>
+							<div class="item dis-box flex-direction-column">
+								<div class="c ta-c">
+									<img src="img/c2.png" alt="">
+									<div class="num dis-box flex-direction-column">
+										<span class="fs24">10.3</span>
+										<span class="fs14">%</span>
+									</div>
+								</div>
+								<div class="t">AAA</div>
+							</div>
+							<div class="item dis-box flex-direction-column">
+								<div class="c ta-c">
+									<img src="img/c3.png" alt="">
+									<div class="num dis-box flex-direction-column">
+										<span class="fs24">1</span>
+										<span class="fs14">%</span>
+									</div>
+								</div>
+								<div class="t">AA</div>
+							</div>
+							<div class="item dis-box flex-direction-column">
+								<div class="c ta-c">
+									<img src="img/c2.png" alt="">
+									<div class="num dis-box flex-direction-column">
+										<span class="fs24">58.2</span>
+										<span class="fs14">%</span>
+									</div>
+								</div>
+								<div class="t">A</div>
+							</div>
+							<div class="item dis-box flex-direction-column">
+								<div class="c ta-c">
+									<img src="img/c3.png" alt="">
+									<div class="num dis-box flex-direction-column">
+										<span class="fs24">15.2</span>
+										<span class="fs14">%</span>
+									</div>
+								</div>
+								<div class="t">无信用</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col col-2 mr-0 r-section">
+				<div class="fs18 c-main pl-20 mb-20 fw-b">垫付主体分类</div>
+				<div class="table border firstbox">
+					<div class="item dis-box">
+						<div class="it h">姓名</div>
+						<div class="it h">住址</div>
+						<div class="it h">级别</div>
+						<div class="it h">分数</div>
+						<div class="it h">星级</div>
+						<div class="it h">评级时间</div>
+					</div>
+					<div class="item dis-box">
+						<div class="it">王树生</div>
+						<div class="it">卢氏县何汤乡北苏村</div>
+						<div class="it">AAA+</div>
+						<div class="it">191</div>
+						<div class="it">5星级</div>
+						<div class="it">2018-09-05</div>
+					</div>
+					<div class="item dis-box">
+						<div class="it">王树生</div>
+						<div class="it">卢氏县何汤乡北苏村</div>
+						<div class="it">AAA+</div>
+						<div class="it">191</div>
+						<div class="it">5星级</div>
+						<div class="it">2018-09-05</div>
+					</div>
+					<div class="item dis-box">
+						<div class="it">王树生</div>
+						<div class="it">卢氏县何汤乡北苏村</div>
+						<div class="it">AAA+</div>
+						<div class="it">191</div>
+						<div class="it">5星级</div>
+						<div class="it">2018-09-05</div>
+					</div>
+					<div class="item dis-box">
+						<div class="it">王树生</div>
+						<div class="it">卢氏县何汤乡北苏村</div>
+						<div class="it">AAA+</div>
+						<div class="it">191</div>
+						<div class="it">5星级</div>
+						<div class="it">2018-09-05</div>
+					</div>
+					<div class="item dis-box">
+						<div class="it">王树生</div>
+						<div class="it">卢氏县何汤乡北苏村</div>
+						<div class="it">AAA+</div>
+						<div class="it">191</div>
+						<div class="it">5星级</div>
+						<div class="it">2018-09-05</div>
+					</div>
+				</div>
+				<div class="dis-box secondbox">
+					<div id="line" class="border"></div>
+					<div class="dis-box piewrap border">
+						<div id="pie1"></div>
+						<div id="pie2"></div>
+					</div>
+				</div>
+				<div class="thirdbox">
+					<img src="img/22.png" alt="">
+					<div class="layer">
+						<div id="chart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/libs/vue.min.js"></script>
+<script src="js/libs/axios.min.js"></script>
+<script src="js/libs/jquery-2.1.4.min.js"></script>
+<script src="js/libs/echarts.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+	$(function(){
+		var circle1 = echarts.init(document.getElementById('circle1'));
+		option1 = {
+			color: ['#5d94d8','#de98ff'],
+			title: {
+		        text: '信用村占比',
+		        textStyle:{
+			        //文字颜色
+			        color:'#00ffff',
+			        fontWeight:'bold',
+			    },
+			    left: 20,
+			    top: 10
+			},
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    series: [
+		        {
+		            type:'pie',
+		            center: ['55%', '60%'],
+		            radius: ['40%', '30%'],
+		            label: {
+		                normal: {
+		                    backgroundColor: '#eee',
+		                    borderColor: '#aaa',
+		                    borderWidth: 1,
+		                    borderRadius: 4,
+		                    // shadowBlur:3,
+		                    // shadowOffsetX: 2,
+		                    // shadowOffsetY: 2,
+		                    // shadowColor: '#999',
+		                    // padding: [0, 7],
+		                    rich: {
+		                        a: {
+		                            color: '#999',
+		                            lineHeight: 22,
+		                            align: 'center'
+		                        },
+		                        // abg: {
+		                        //     backgroundColor: '#333',
+		                        //     width: '100%',
+		                        //     align: 'right',
+		                        //     height: 22,
+		                        //     borderRadius: [4, 4, 0, 0]
+		                        // },
+		                        hr: {
+		                            borderColor: '#aaa',
+		                            width: '100%',
+		                            borderWidth: 0.5,
+		                            height: 0
+		                        },
+		                        b: {
+		                            fontSize: 16,
+		                            lineHeight: 33
+		                        },
+		                        per: {
+		                            color: '#eee',
+		                            backgroundColor: '#334455',
+		                            padding: [2, 4],
+		                            borderRadius: 2
+		                        }
+		                    }
+		                }
+		            },
+		            data:[
+		                {value:13, name:'信用84.2%'},
+		                {value:3, name:'非信用15.8%'},
+		            ]
+		        }
+		    ]
+		};
+	 	
+	 	var circle2 = echarts.init(document.getElementById('circle2'));
+		option2 = {
+			color: ['#7ee6ff','#6b4ad5'],
+			title: {
+		        text: '信用村占比',
+		        textStyle:{
+			        //文字颜色
+			        color:'#00ffff',
+			        fontWeight:'bold',
+			    },
+			    left: 18,
+			    top: 10
+			},
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    series: [
+		        {
+		            name:'访问来源',
+		            type:'pie',
+		            selectedMode: 'single',
+		            radius: [0, '30%'],
+
+		            label: {
+		                normal: {
+		                    position: 'inner'
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            data:[
+		               
+		            ]
+		        },
+		        {
+		            name:'访问来源',
+		            type:'pie',
+		            center: ['55%', '60%'],
+		            radius: ['40%', '30%'],
+		            label: {
+		                normal: {
+		                    backgroundColor: '#eee',
+		                    borderColor: '#aaa',
+		                    borderWidth: 1,
+		                    borderRadius: 4,
+		                    // shadowBlur:3,
+		                    // shadowOffsetX: 2,
+		                    // shadowOffsetY: 2,
+		                    // shadowColor: '#999',
+		                    // padding: [0, 7],
+		                    rich: {
+		                        a: {
+		                            color: '#999',
+		                            lineHeight: 22,
+		                            align: 'center'
+		                        },
+		                        // abg: {
+		                        //     backgroundColor: '#333',
+		                        //     width: '100%',
+		                        //     align: 'right',
+		                        //     height: 22,
+		                        //     borderRadius: [4, 4, 0, 0]
+		                        // },
+		                        hr: {
+		                            borderColor: '#aaa',
+		                            width: '100%',
+		                            borderWidth: 0.5,
+		                            height: 0
+		                        },
+		                        b: {
+		                            fontSize: 16,
+		                            lineHeight: 33
+		                        },
+		                        per: {
+		                            color: '#eee',
+		                            backgroundColor: '#334455',
+		                            padding: [2, 4],
+		                            borderRadius: 2
+		                        }
+		                    }
+		                }
+		            },
+		            data:[
+		                {value:216, name:'信用78.4%'},
+		                {value:60, name:'非信用21.6%'},
+		            ]
+		        }
+		    ]
+		};
+	
+		line = echarts.init(document.getElementById('line'))
+		l_option = {
+		    title: {
+		        text: '不良率排行',
+		        textStyle:{
+			        //文字颜色
+			        color:'#00ffff',
+			        fontWeight:'bold',
+		    		fontSize: 18
+			    },
+			    left: 18,
+			    top:20
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'cross',
+		            label: {
+		                backgroundColor: '#fff'
+		            }
+		        }
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+
+	                    }
+	                },
+		            data : ['周一','周二','周三','周四','周五','周六','周日']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            }, 
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+
+	                    }
+	                }
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'邮件营销',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {
+		            	normal: {
+							color: 'rgba(0, 255, 255, .2)',
+		            	}
+		        	},
+		        	lineStyle: {
+                        normal: {
+                            width: 4,
+                            color:'rgba(0, 255, 255, .5)' 
+                        }
+                    },   
+		            data:[120, 132, 101, 134, 90, 230, 210]
+		        }
+		    ]
+		};
+
+		var pie1 = echarts.init(document.getElementById('pie1'));
+		p_option1 = {
+			color: ['#63bff4','#88fbff','#65d5fe','#65d5fe','#6a70ed'],
+		    title : {
+		        text: '非贫困用户信用等级分析',
+		        x:'center',
+		        textStyle:{
+			        color:'#00ffff',
+			        fontWeight:'bold',
+			    },
+			    top:20
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    calculable : true,
+		    series : [
+		        {
+		            type:'pie',
+		            radius : '40%',
+		            center : ['50%', '60%'],
+		            roseType : 'area',
+		            data:[
+		                {value:20, name:'AAA+'},
+		                {value:16, name:'AAA'},
+		                {value:18, name:'AA'},
+		                {value:20, name:'A'},
+		                {value:22, name:'无信用'}
+		            ]
+		        }
+		    ]
+		};
+
+	 	var pie2 = echarts.init(document.getElementById('pie2'));
+		p_option2 = {
+			color: ['#63bff4','#88fbff','#65d5fe','#65d5fe','#6a70ed'],
+		    title : {
+		        text: '非贫困户信用等级分析',
+		        x:'center',
+		        textStyle:{
+			        color:'#00ffff',
+			        fontWeight:'bold',
+			    },
+			    top:20
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    calculable : true,
+		    series : [
+		        {
+		            name:'面积模式',
+		            type:'pie',
+		            radius : '40%',
+		            center : ['50%', '60%'],
+		            roseType : 'area',
+		            data:[
+		                {value:20, name:'AAA+'},
+		                {value:16, name:'AAA'},
+		                {value:18, name:'AA'},
+		                {value:20, name:'A'},
+		                {value:22, name:'无信用'}
+		            ]
+		        }
+		    ]
+		};
+
+	 	var chart2 = echarts.init(document.getElementById('chart2'));
+		c_option2 = {
+		    color: ['#00ffff','#0d8ce4'],
+		    title: {
+		    	text: "乡镇（村）占比前五名",
+		    	textStyle:{
+		    		color: "#82c0eb",
+		    		fontSize: 22
+		    	},
+	    		left: 18
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        }
+		    },
+		    legend: {
+		        data:[{
+	                name:'垫付占比',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'金额',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		        top: 0,
+		        right: 50,
+		        width: 200,
+		         textStyle:{
+	               fontSize:14,
+	               color:'#fff'
+	           }	
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            splitLine:{
+		            	show: false,
+		            },
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'category',
+		            axisTick : {show: false},
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            data : ['县政府','周二','周三','周四','周五','周六','周日']
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'垫付占比',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true
+		                }
+		            },
+		            data:[320, 302, 341, 374, 390, 450]
+		        },
+		        {
+		            name:'金额',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true,
+		                    position: 'left'
+		                }
+		            },
+		            data:[-120, -132, -101, -134, -190, -230]
+		        }
+		    ]
+		};
+
+		setTimeout(function(){
+			circle1.setOption(option1);
+		},200)
+		setTimeout(function(){
+	 		circle2.setOption(option2);
+		},600)
+		setTimeout(function(){
+			line.setOption(l_option);
+		},800)
+		setTimeout(function(){
+	 		pie1.setOption(p_option1);
+	 		pie2.setOption(p_option2);
+		},1600)
+		setTimeout(function(){
+			chart2.setOption(c_option2);
+		},2200)
+
+		//地图初始化
+		$(".mapBox").on("mouseover","span",function(){
+			var bg = $(this).attr('class');
+			var title = $(this).attr('title');
+			$('.mapBox img').attr('src','img/'+bg+'.png')
+			$(".information h4").html(title)
+			$(".information").show()
+		})
+
+		var FEer_number = {
+			numberArr : ['zero','one','two','three','four','five','six','seven','eight','nine'],
+
+			showNum (num, dom) {
+				var na = this.getNumArr(num) ;
+				var div_outer = document.createElement('div');  
+				var div_inner = document.createElement('div');  
+				div_outer.className = 'clock';  
+				div_inner.className = 'digits';  
+				for (var i = 0; i < na.length; i++) {
+					var temp = '<div class="zero">'
+									+'<span class="d1"></span>'
+									+'<span class="d2"></span>'
+									+'<span class="d3"></span>'
+									+'<span class="d4"></span>'
+									+'<span class="d5"></span>'
+									+'<span class="d6"></span>'
+									+'<span class="d7"></span>'
+								+'</div>'
+					$(div_inner).append(temp);  
+					$(div_outer).append(div_inner);  
+					dom.append(div_outer)
+				}
+			},
+
+			getNumArr (num){
+				var temp = num.toString()
+				var arr = temp.split('');
+				return arr;
+			},
+
+			changeNum (num,dom) {
+				this.showNum(num,dom);
+				var na = this.getNumArr(num);
+				var dom = $(dom).find('.digits > div');
+				var j = 0;
+				var _this = this;
+				for (var i = 0; i < dom.length; i++) {
+					(function(i) {
+						setTimeout(()=>{
+							$(dom[i]).attr('class',_this.numberArr[parseInt(na[i])])
+						},i*80)
+					})(i)
+				}
+			}
+		}
+
+		FEer_number.changeNum(5664,$('.clk_one'))
+		FEer_number.changeNum(9244,$('.clk_two'))
+		FEer_number.changeNum(8899,$('.clk_three'))
+		FEer_number.changeNum(51977,$('.clk_four'))
+		FEer_number.changeNum(13533,$('.clk_five'))
+	})
+</script>
+</html>	

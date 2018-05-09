@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link   rel="icon" href="http://jrfp.znx-af.com:80/jrfp/favicon.ico" type="image/x-icon" />
+		<link   rel="shortcut icon" href="http://jrfp.znx-af.com:80/jrfp/favicon.ico" />
+	    <title>“卢氏模式”金融扶贫四大科技系统--服务系统</title>
+		<link rel="stylesheet" href="css/page-styles.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="js/ZoomPic.js" ></script>
+		<script type="text/javascript" src="js/circle-progress.js" ></script>
+		<script type="text/javascript" src="js/echarts.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.waypoints.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.countup.min.js" ></script>
+	</head>
+	<body>
+		<img src="images/bodyBg.jpg" width="100%" height="100%" class="bgimg" />
+		<div class="head"></div>
+		<div class="main clearfix">
+				<div class="mainLeft">
+					<!-- 三级服务站体系开始-->
+					<div class="leftfirst border">
+						<h4> 三级服务站体系</h4>
+						<div class="leftfirstbox">
+							 <span>
+							 	<b  class="counter" id="countyCount">0</b>
+							 	<p>县服务中心</p>
+							 </span>
+							 <span>
+							 	<b class="counter" id="townCount">0</b>
+							 	<p>乡镇服务站</p>
+							 </span>
+							 <span>
+							 	<b class="counter" id="villageCount">0</b>
+							 	<p>村服务部</p>
+							 </span>
+							 <span class="last">
+							 	<b class="counter" id="userCount">0</b>
+							 	<p>三级服务体系人员</p>
+							 </span>
+						</div>
+					</div>
+					<!-- 新增贷款信息开始-->
+					<div class="leftsecond">
+						<h4>新增贷款信息</h4>
+						<div id="focus_Box">
+								<ul id="ulList">
+									<li id="lilist"></li>
+									<li id="lilist2"></li>
+								</ul>
+						</div>
+					</div>
+					<!-- 贷款实时监控分析开始-->
+					<div class="leftthird border">
+						<h4> 贷款实时监控分析</h4>
+						<div class="leftthirdbox">
+							 <span>
+							 	<b class="counter" id="totalAuditing">0</b>
+							 	<p>正在审批的项目数 </p>
+							 </span>
+							 <span>
+							 	<b class="counter" id="totalAudited">0</b>
+							 	<p>已审批的项目数 </p>
+							 </span>
+							 <span>
+							 	<b><span class="counter">0</span>%</b>
+							 	<p>逾期率</p>
+							 </span>
+							 <span>
+							 	<b><span class="counter">0</span>%</b>
+							 	<p>不良率</p>
+							 </span>
+						</div>
+					</div>
+					<!-- 信用评价数据开始-->
+					<div class="leftfourth border">
+						<div class="leftfourthHead clearfix">
+							<h4>信用评价数据</h4>
+							<p>已采集人员：<span id="collectedCount"></span></p>
+						</div>
+						<div id="container1" style="width: 100% ;height: 100%;" ></div>
+					</div>
+				</div>
+				<div class="mainMid">
+					<!--累计金融扶贫贷款金额开始-->
+					<div class="midhead">
+							<p>累计金融扶贫贷款金额(元)</p>
+							<h2 class="counter" id="totalAmount">0</h2>
+					</div>
+					<!--地图部分开始-->
+					<div class="mapBox">
+							<img src="images/ditu.png" width="100%" />
+							<span class="chenguan" title="城关镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse"></div>  
+								</div>
+							</span>
+							<span class="dongming" title="东明镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse1"></div>  
+								</div>
+							</span>
+							<span class="duguan" title="杜关镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse2"></div>  
+								</div>
+							</span>
+							<span class="fanli" title="范里镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse3"></div>  
+								</div>
+							</span>
+							<span class="guandao" title="官道口镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse4"></div>  
+								</div>
+							</span>
+							<span class="guanpo"  title="官坡镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse5"></div>  
+								</div>
+							</span>
+							<span class="hengjian" title="横涧乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse6"></div>  
+								</div>
+							</span>
+							<span class="mutong" title="木桐乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse7"></div>  
+								</div>
+							</span>
+							<span class="panhe" title="潘河乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse8"></div>  
+								</div>
+							</span>
+							<span class="shahe" title="沙河乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse9"></div>  
+								</div>
+							</span>
+							<span class="shizi" title="狮子坪乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse10"></div>  
+								</div>
+							</span>
+							<span class="shuangkui" title="双槐树乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse11"></div>  
+								</div>
+							</span>
+							<span class="shuanglong" title="双龙湾镇">
+								<div class="shuanglong2"></div>
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse12"></div>  
+								</div>
+							</span>
+							<span class="tanghe" title="汤河乡">
+								<div class="tanghe2"></div>
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse13"></div>  
+								</div>
+							</span>
+							<span class="wayao" title="瓦窑沟乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse14"></div>  
+								</div>
+							</span>
+							<span class="wenyu" title="文峪乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse15"></div>  
+								</div>
+							</span>
+							<span class="wuli" title="五里川镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse16"></div>  
+								</div>
+							</span>
+							<span class="xujia" title="徐家湾乡">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse17"></div>  
+								</div>
+							</span>
+							<span class="zhuyang" title="朱阳关镇">
+								<div class="anmit">
+									<div class="dot"></div>  
+			    					<div class="pulse pulse18"></div>  
+								</div>
+							</span>
+					</div>
+					<!--地区贷款前七名排行榜开始-->
+					<div class="midBottom border">
+							<h4>地区贷款前七名排行榜</h4>
+							<div id="container" style="width: 100% ;height: 100%;" ></div>
+					</div>
+				</div>
+				<div class="mainRight">
+					<!--贷款类型数据分析开始-->
+					<div class="rightTop border">
+							<h4>贷款类型数据分析</h4>
+							<div class="rightTopBox">
+								<div class="listHead">
+									<span class="hzs">
+										<i><b class="counter" id="applyLoanCount">0</b>家</i>
+									</span>
+									<p>农户</p>
+								</div>
+								<div class="listHead">
+									<span class="pkf">
+										<i><b class="counter" id="cooperativeLoanCount">0</b>家</i>
+									</span>
+									<p>新型农业经营主体</p>
+								</div>
+								<div class="listHead">
+									<span class="ltqy">
+										<i><b class="counter" id="enterpriseLoanCount">0</b>家</i>
+									</span>
+									<p>龙头企业</p>
+								</div>
+							</div>
+							<div class="rightTopList">
+								<ul>
+									<li class="hzs clearfix"><span>农户</span><div class="pre"><div class="bar"><div  id="farmerLoan" class="counter">0</div>元</div></div></li>
+									<li class="pkf clearfix"><span>新型农业经营主体</span><div class="pre"><div class="bar" ><div id="cooperativeLoan" class="counter">0</div>元</div></div></li>
+									<li class="ltqy clearfix"><span>龙头企业</span><div class="pre"><div class="bar" ><div id="enterpriseLoan" class="counter">0</div>元</div></div></li>
+								</ul>
+							</div>
+					</div>
+					<!--农户脱贫产业分布开始-->
+					<div class="rightMid border">
+						<h4>农户脱贫产业分布</h4>
+						<div class="rightMidlist">
+							<ul>
+								<li class="hzs clearfix"><span>特色工业</span><div class="pre"><div class="bar" id="agricultures"></div></div><i id="agricultureRatio"></i></li>
+								<li class="pkf clearfix"><span><p>生态旅游</p><p>电子商务</p></span><div class="pre"><div class="bar"  id="characters"></div></div><i id="characterRatio"></i></li>
+								<li class="ltqy clearfix"><span>绿色农业</span><div class="pre"><div class="bar" id="services"></div></div><i id="serviceRatio"></i></li>
+							</ul>
+						</div>
+					</div>
+					<!--农户脱贫产业分布开始-->
+					<div class="rightBottom border">
+						<h4>放款主体数据分析</h4>
+						<div class="htmleaf-container">
+							<div class="htmleaf-content bgcolor-8">
+								<div class="circles">
+									<div class="first circle">
+										<strong></strong>
+										<p>农商行</p>
+								    </div>
+								    <div class="second circle">
+										<strong></strong>
+										<p>村镇银行</p>
+								    </div>
+								    <div class="third circle">
+										<strong></strong>
+										<p>农行</p>
+								    </div>
+								    <div class="fourth circle">
+										<strong></strong>
+										<p>邮政储蓄</p>
+								    </div>
+								    <div class="fifth circle">
+										<strong></strong>
+										<p>中原银行</p>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		<!--地图展示-->
+		<div class="MapDisplay" >
+				<div class="mapHead">
+					<div class="cha"></div>
+				</div>
+				<div class="mapBody">
+					<div class="mapBodyTop clearfix">
+						<div class="mapBodyTopLeft">
+						</div>
+						<div class="mapBodyTopImg">
+							<img src="images/dmz.png" width="80%" />
+						</div>
+						<div class="mapBodyTopRight">
+							
+						</div>
+					</div>
+					<div class="mapBodyBottom">
+							<h4>地区信用数据展示</h4>
+							<div id="mapBottom">
+							</div>
+					</div>
+				</div>
+		</div>
+		<!--贷款类数据分析-->
+		<div class="LoanAnalysis">
+			<div class="loanHead">
+				<div class="cha"></div>
+			</div>
+			<div class="loanBody">
+					<div class="loanBodyTop">
+							<ul class="clearfix">
+								<li>
+									<p>农户</p>
+									<p><span id="loanapplyLoanCount" class="counter">0</span>户</p>
+								</li>
+								<li>
+									<p>新型农业经营主体</p>
+									<p><span id="loancooperativeLoanCount" class="counter">0</span>家</p>
+								</li>
+								<li>
+									<p>龙头企业</p>
+									<p><span id="loanenterpriseLoanCount" class="counter">0</span>家</p>
+								</li>
+							</ul>
+					</div>
+					<div class="loanBodyBottom clearfix">
+							<div class="loanBodyBottomLeft">
+									<div id="loanBody"></div>
+									<p>各贷款类型贷款金额</p>
+							</div>
+							<div class="loanBodyBottomRight">
+									<ul>
+										<li class="clearfix nh"><span>农 户</span><div class="pre"><div class="bar" ></div></div><i>20.3%</i></li>
+										<li class="clearfix hzs"><span>新型农业经营主体</span><div class="pre"><div class="bar" ></div></div><i>43.4%</i></li>
+										<li class="clearfix qy"><span>龙头企业</span><div class="pre"><div class="bar" ></div></div><i>34.4%</i></li>
+									</ul>
+									<p>各贷款类型贷款金额占比</p>
+							</div>
+					</div>
+			</div>
+		</div>
+		<!--三级服务体系-->
+		<div class="ServiceSystem">
+			<div class="serviceHead">
+				<div class="cha"></div>
+			</div>
+			<div class="serviceBody">
+					<div class="serviceBodyTop">
+						<ul class="clearfix">
+							<li>
+								<p>县服务站中心</p>
+								<p><span id="countys" class="counter">0</span></p>
+							</li>
+							<li>
+								<p>乡镇服务站</p>
+								<p><span id="towns" class="counter">0</span></p>
+							</li>
+							<li>
+								<p>村服务部</p>
+								<p><span id="villages" class="counter">0</span></p>
+							</li>
+							<li>
+								<p>三级服务体系人员</p>
+								<p><span id="users" class="counter">0</span></p>
+							</li>
+						</ul>
+					</div>
+					<div class="serviceBodyBottom">
+						<ul>
+							<li class="village"><div class="percentage" style="width: 30%;"><span><b class="counter">0</b>人-村服务部</span></div><i></i></li>
+							<li class="country"><div class="percentage" style="width: 40%;"><span><b class="counter">0</b>人-乡服务部</span></div><i></i></li>
+							<li class="county"><div class="percentage" style="width: 50%;"><span><b class="counter">0</b>人-县服务部</span></div><i></i></li>
+							<li class="bank"><div class="percentage" style="width: 20%;"><span><b class="counter">0</b>人-银行服务点</span></div><i></i></li>
+							<li class="province"><div class="percentage" style="width: 60%;"><span><b class="counter">0</b>人-省农信贷担保</span></div><i></i></li>
+						</ul>
+						<p>各级服务点正处于工作状态人数：<b class="counter">0</b></p>
+					</div>
+			</div>
+		</div>
+		<!--农户脱贫产业分布-->
+		<div class="ShakeDistribution">
+			<div class="shakeHead">
+				<div class="cha"></div>
+			</div>
+			<div class="shakeBody clearfix">
+				<div class="shakeBodyLeft">
+					<div class="shakeBodyLeftTop">
+						<h4>绿色农业贷款数据分析</h4>
+						<div class="shakePercent">
+								<div class="htmleaf-container">
+								<div class="htmleaf-content bgcolor-8">
+									<div class="circles">
+										<div class="Percentfirst circle">
+											<strong></strong>
+											<p>蔬菜业</p>
+									    </div>
+									    <div class="Percentsecond circle">
+											<strong></strong>
+											<p>食用菌</p>
+									    </div>
+									    <div class="Percentthird circle">
+											<strong></strong>
+											<p>药材业</p>
+									    </div>
+									    <div class="Percentfourth circle">
+											<strong></strong>
+											<p>畜牧业</p>
+									    </div>
+									    <div class="Percentfifth circle">
+											<strong></strong>
+											<p>林果业</p>
+									    </div>
+									    <div class="Percentsix circle">
+											<strong></strong>
+											<p>其他</p>
+									    </div>
+									</div>
+								</div>
+						</div>
+						</div>
+						<div class="shakeEchart">
+								<div id="shakeBox"></div>
+						</div>
+						<h4>现代服务业贷款数据分析</h4>
+						<div class="dataAnalysis clearfix">
+							<div class="dataAnalysisLeft">
+								<div id="analysis"></div>
+							</div>
+							<div class="dataAnalysisRight">
+								<ul>
+									<li class="dzsw"><span>电子商务</span><div class="per"><div class="bar" style="width: 0%;"></div></div><i>0</i>万</li>
+									<li class="stly"><span>生态旅游</span><div class="per"><div class="bar" style="width:0%;"></div></div><i>0</i>万</li>
+									<li class="qt"><span>其 他</span><div class="per"><div class="bar" style="width:0%;"></div></div><i>0</i>万</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="shakeBodyRight">
+					<div class="shakeBodyRightTop">
+						<h4>特色工业贷款数据分析</h4>
+						<div class="characteristic">
+							<div class="characteristicLeft">
+								<div id="characteristicBox"></div>
+							</div>
+							<div class="characteristicRight">
+								<ul>
+									<li class="nf"><span>农副产品深加工</span><div class="per"><div class="bar" style="width: 0%;"></div></div><i>0</i>万</li>
+									<li class="zy"><span>中药材深加工</span><div class="per"><div class="bar" style="width: 0%;"></div></div><i>0</i>万</li>
+									<li class="qt"><span>其 他</span><div class="per"><div class="bar" style="width: 0%;"></div></div><i>0</i>万</li>
+								</ul>
+							</div>
+						</div>
+						<h4>放款主体数据分析</h4>
+						<div class="characterPercent">
+								<div class="htmleaf-container">
+								<div class="htmleaf-content bgcolor-8">
+									<div class="circles">
+										<div class="characterfirst circle">
+											<strong></strong>
+											<p>农商行</p>
+									    </div>
+									    <div class="charactersecond circle">
+											<strong></strong>
+											<p>村镇银行</p>
+									    </div>
+									    <div class="characterthird circle">
+											<strong></strong>
+											<p>农行</p>
+									    </div>
+									    <div class="characterfourth circle">
+											<strong></strong>
+											<p>邮政储蓄</p>
+									    </div>
+									    <div class="characterfifth circle">
+											<strong></strong>
+											<p>中原银行</p>
+									    </div>
+									</div>
+								</div>
+						</div>
+					</div>
+						<div class="characterEchart">
+								<div id="characterBox"></div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/index.js" ></script>
+</html>

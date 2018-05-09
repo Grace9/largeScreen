@@ -1,0 +1,677 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: microsoft yahei!important;
+    list-style: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all .5s ease 0s;
+    color: #fff;
+}
+a, a:active, a:hover{
+    text-decoration: none!important;
+    color: #999;
+}
+
+.main{
+    height: 100%;
+}
+ul{
+    margin-bottom: 0px !important;
+}
+input{
+    outline: none;
+}
+input[disabled="disabled"]{
+    background-color: #fff;
+}
+.wrapper{
+    position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 1200px;
+}
+/*默认placeholder*/
+::-moz-placeholder { color: #ccc; }
+::-webkit-input-placeholder { color:#ccc; }
+:-ms-input-placeholder { color:#ccc; }
+
+.lab{
+    width: 4px;
+    height: 16px;
+    margin-top: 3px;
+}
+
+/***********************************公共类**************************/
+/*背景色*/
+.bg-white{
+    background-color: #fff !important;
+}
+.bg-grey{
+    background-color: #ddd !important;
+}
+.bg-main{
+    background-color: #0d4e9c !important;
+}
+.bg-orange{
+    background-color: #f08519 !important;
+}
+.bg-red{
+    background-color: #ff3232 !important;
+}
+/*字体色*/
+.c3{
+    color: #333 !important;
+}
+.c6{
+    color: #666 !important;
+}
+.c9{
+    color: #999 !important;
+}
+.cc{
+    color: #ccc !important;
+}
+.ca{
+    color: #aaa !important;
+}
+.cf{
+    color: #fff !important;
+}
+
+/*字体颜色*/
+.c-main{
+    color: #00ffff !important;
+}
+.c-blue{
+    color: #76b2fb !important;
+}
+.c-red{
+    color: #ff3232 !important;
+}
+.c-orange{
+    color: #f08519 !important;
+}
+
+/*定位*/
+.rel{
+    position: relative;
+}
+.abs{
+    position: absolute;
+}
+.t0{
+  top: 0;  
+}
+.b0{
+  bottom: 0;  
+}
+.r0{
+  right: 0;  
+}
+.l0{
+  left: 0;  
+}
+.dis-in{
+    display: inline-block;
+}
+.dis-b{
+    display: block;
+}
+.dis-n{
+    display: none !important;
+}
+.fr{
+    float: right;
+}
+.fl{
+    float: left;
+}
+.clearfix{
+    zoom: 1;
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+/*字体大小*/
+.fs0{
+    font-size: 0;
+}
+.fs12{
+    font-size: 12px!important;
+}
+.fs13{
+    font-size: 13px!important;
+}
+.fs14{
+    font-size: 14px!important;
+}
+.fs15{
+    font-size: 15px!important;
+}
+.fs16{
+    font-size: 16px!important;
+}
+.fs18{
+    font-size: 18px!important;
+}
+.fs20{
+    font-size: 20px!important;
+}
+.fs22{
+    font-size: 22px!important;
+}
+.fs24{
+    font-size: 24px!important;
+}
+.fs26{
+    font-size: 26px!important;
+}
+.fs28{
+    font-size: 28px!important;
+}
+.fs30{
+    font-size: 30px!important;
+}
+/*边框*/
+.border0{
+    border:0 !important;
+}
+.b{
+    border: 1px solid #e6e6e6;
+}
+.bb{
+    border-bottom: 1px solid #e6e6e6;
+}
+.bt {
+    border-top: 1px solid #e6e6e6;
+}
+.br{
+    border-right: 1px solid #e6e6e6;
+}
+.bl{
+    border-left: 1px solid #e6e6e6;
+}
+
+.ofh{
+    overflow: hidden;
+}
+.ta-c{
+    text-align: center !important;
+}
+.ta-r{
+    text-align: right !important;
+}
+.ta-l{
+    text-align: left !important;
+}
+.va-t{
+    vertical-align: top;
+}
+.va-m{
+    vertical-align: middle;
+}
+.va-b{
+    vertical-align: bottom;
+}
+.va-base{
+    vertical-align: baseline;
+}
+
+.fw-b{
+    font-weight: bold;
+}
+.ti-20{
+    text-indent: 20px;
+}
+.lh-0{
+    line-height: 0 !important;
+}
+.lh-30{
+    line-height: 30px !important;
+}
+.invisabiliy{
+    visibility: hidden;
+}
+.hide{
+    display: none !important;
+}
+
+/*flex布局*/
+.dis-box{
+    display: box;              /* OLD - Android 4.4- */  
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */  
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */  
+    display: -ms-flexbox;      /* TWEENER - IE 10 */  
+    display: -webkit-flex;     /* NEW - Chrome */  
+    display: flex;  
+    -webkit-box-align: center;
+    -moz-box-align: center; 
+    -ms-flex-align: center; 
+    -webkit-align-items: center;
+    align-items: center;
+}
+.flex-1{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */  
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */  
+    -webkit-flex: 1;          /* Chrome */  
+    -ms-flex: 1;              /* IE 10 */  
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.flex-2 {
+    -webkit-box-flex: 2;      /* OLD - iOS 6-, Safari 3.1-6 */  
+    -moz-box-flex: 2;         /* OLD - Firefox 19- */  
+    -webkit-flex: 2;          /* Chrome */  
+    -ms-flex: 2;              /* IE 10 */  
+    flex: 2;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.dis-box.justify-content-end{
+    justify-content: flex-end;
+    -ms-flex-pack: flex-end;
+}
+.dis-box.justify-content-center{
+    justify-content: center;
+    -ms-flex-pack: center;
+}
+.dis-box.justify-content-between{
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+}
+.dis-box.justify-content-around{
+    -webkit-justify-content:space-around;
+    justify-content:space-around;
+}
+
+.dis-box.flex-wrap{
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+}
+
+.dis-box.align-items-top{
+    -webkit-box-align: start;
+    -moz-box-align: start; 
+    -ms-flex-align: start; 
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+.dis-box.align-items-end{
+    -webkit-box-align: end;
+    -moz-box-align: end; 
+    -ms-flex-align: end; 
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+.dis-box.align-items-stretch{
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch; 
+    -ms-flex-align: stretch; 
+    -webkit-align-items: stretch;
+    align-items: stretch;
+}
+
+.dis-box.flex-direction-column{
+    flex-direction: column;
+    -ms-flex-direction: column;
+}
+/* 1-3行溢出隐藏 */
+.overflow-line-1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;     
+    display: -webkit-box;     
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.overflow-line-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;     
+    display: -webkit-box;   
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.overflow-line-3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;             
+    display: -webkit-box;     
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* width*/
+.w-full{
+    width: 100% !important;
+}
+/* padding and margin  */
+.pd-0{
+    padding: 0 !important;
+}
+.pd-5{
+    padding: 5px !important;
+}
+.pd-10{
+    padding: 10px !important;
+}
+.pd-20{
+    padding: 20px !important;
+}
+.pd-30{
+    padding: 30px !important;
+}
+.pd-50{
+    padding: 50px !important;
+}
+.pd-100{
+    padding: 100px !important;
+}
+.pt-0{
+    padding-top: 0px !important;
+}
+.pt-5{
+    padding-top: 5px !important;
+}
+.pt-10{
+    padding-top: 10px !important;
+}
+.pt-20{
+    padding-top: 20px !important;
+}
+.pt-30{
+    padding-top: 30px !important;
+}
+.pt-40{
+    padding-top: 40px !important;
+}
+.pt-50{
+    padding-top: 50px !important;
+}
+.pt-80{
+    padding-top: 80px !important;
+}
+.pt-100{
+    padding-top: 100px !important;
+}
+.pl-0{
+    padding-left: 0 !important;
+}
+.pl-5{
+    padding-left: 5px !important;
+}
+.pl-10{
+    padding-left: 10px !important;
+}
+.pl-15{
+    padding-left: 15px !important;
+}
+.pl-20{
+    padding-left: 20px !important;
+}
+.pl-30{
+    padding-left: 30px !important;
+}
+.pl-40{
+    padding-left: 40px !important;
+}
+.pl-50{
+    padding-left: 50px !important;
+}
+.pl-60 {
+    padding-left: 60px !important;
+}
+.pl-100{
+    padding-left: 100px !important;
+}
+.pr-0{
+    padding-right: 0 !important;
+}
+.pr-5{
+    padding-right: 5px !important;
+}
+.pr-10{
+    padding-right: 10px !important;
+}
+.pr-15{
+    padding-right: 15px !important;
+}
+.pr-20{
+    padding-right: 20px !important;
+}
+.pr-30{
+    padding-right: 30px !important;
+}
+.pr-40{
+    padding-right: 40px !important;
+}
+.pr-50{
+    padding-right: 50px !important;
+}
+.pr-80{
+    padding-right: 80px !important;
+}
+.pr-100{
+    padding-right: 100px !important;
+}
+.pb-0{
+    padding-bottom: 0 !important;
+}
+.pb-10{
+    padding-bottom: 10px !important;
+}
+.pb-20{
+    padding-bottom: 20px !important;
+}
+.pb-30{
+    padding-bottom: 30px !important;
+}
+.pb-50{
+    padding-bottom: 50px !important;
+}
+.pb-80{
+    padding-bottom: 80px !important;
+}
+.pb-100{
+    padding-bottom: 100px !important;
+}
+.mt-0{
+    margin-top: 0px !important;
+}
+.mt-5{
+    margin-top: 5px!important;
+}
+.mt-10{
+    margin-top: 10px !important;
+}
+.mt-20{
+    margin-top: 20px !important;
+}
+.mt-30{
+    margin-top: 30px !important;
+}
+.mt-40{
+    margin-top: 40px !important;
+}
+.mt-50{
+    margin-top: 50px !important;
+}
+.mt-100{
+    margin-top: 100px !important;
+}
+.ml-10{
+    margin-left: 10px !important;
+}
+.ml-20{
+    margin-left: 20px !important;
+}
+.ml-30{
+    margin-left: 30px !important;
+}
+.ml-50{
+    margin-left: 50px !important;
+}
+.ml-100{
+    margin-left: 100px !important;
+}
+.mr-0{
+    margin-right: 0 !important;
+}
+.mr-10{
+    margin-right: 10px !important;
+}
+.mr-20{
+    margin-right: 20px !important;
+}
+.mr-30{
+    margin-right: 30px !important;
+}
+.mr-50{
+    margin-right: 50px !important;
+}
+.mr-100{
+    margin-right: 100px !important;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+}
+.mb-5{
+    margin-bottom: 5px!important;
+}
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.mb-20{
+    margin-bottom: 20px !important;
+}
+.mb-30{
+    margin-bottom: 30px !important;
+}
+.mb-40{
+    margin-bottom:40px !important;
+}
+.mb-50{
+    margin-bottom: 50px !important;
+}
+.mb-60{
+    margin-bottom: 60px !important;
+}
+.mb-100{
+    margin-bottom: 100px !important;
+}
+.plr-5{
+    padding: 0 5%;
+}
+.plr-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.plr-16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.ptb-10{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.ptb-15{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+/*分隔线*/
+.gapline-v{
+    position: relative;
+}
+.gapline-v:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 1px;
+    background-color: #fff;
+}
+.gapline-v.black:after{
+    background-color: #333;
+}
+/*.gapline-h{
+*/
+
+.whitespace-no{
+    white-space: nowrap;
+}
+
+/*输入框*/
+.inputwrap{
+    display: -webkit-box;     
+    display: -moz-box;       
+    display: -ms-flexbox;   
+    display: -webkit-flex;   
+    display: flex;  
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+    background-color: #eee;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.inputwrap .tit{
+    height: 30px;
+    line-height: 30px;
+    padding-right: 5px;
+    color: #333;
+    font-size: 14px;
+}
+.inputwrap input{
+    display: block;
+    display: box;              /* OLD - Android 4.4- */  
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */  
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */  
+    display: -ms-flexbox;      /* TWEENER - IE 10 */  
+    display: -webkit-flex;     /* NEW - Chrome */  
+    display: flex;  
+    display: block;
+    width: 100%;
+    height: 30px;
+    border: none;
+    background: rgba(0,0,0,0);
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.textareawrap{
+    width: 100%;
+    display: box;              /* OLD - Android 4.4- */  
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */  
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */  
+    display: -ms-flexbox;      /* TWEENER - IE 10 */  
+    display: -webkit-flex;     /* NEW - Chrome */  
+    display: flex;  
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+    background-color: #eee;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.textareawrap .tit{
+    padding-right: 5px;
+    color: #333;
+    font-size: 14px;
+}
+.textareawrap textarea{
+    display: block;
+    -webkit-box-flex: 1; 
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    min-height: 100px;
+    background: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+    resize: none;
+}

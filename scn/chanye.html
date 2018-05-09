@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.cy .one, .cy .two{
+			margin-bottom: 5%;
+		}
+		#line,#pie{
+			width: 100%;
+			height: 100%;
+		}
+		
+		.cy .col .tit{
+			position: absolute;
+			left: 5%;
+			top: 0;
+			margin-top: 4%;
+			color: #fff;
+			font-size: 22px;
+			font-weight: bold;
+			color: #82c0eb;
+			z-index: 9999;
+		}
+		
+		.cy .col .layer{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.clk_one,.clk_two,.clk_three{
+			padding: 0 5%;
+			min-width: 147px;
+			box-sizing: content-box;
+		}
+		.cy .col.l_section .l_s_top .item{
+			margin-bottom: 10%;
+		} 
+		.cy .col.l_section .l_s_bottom{
+			position: relative;
+		}
+		.cy .col.l_section .l_s_bottom .layer{
+			top: 12%;
+			height: 88%;
+			padding: 0 4%;
+			box-sizing: border-box;
+		}
+		.cy .col.l_section .l_s_bottom .layer .item{
+			padding: 2%; 
+			height: 23%;
+			width: 100%;
+			background: rgba(255,255,255,.1);
+			margin-bottom: 1.2%;
+			box-sizing: border-box;
+		}
+		.cy .col.l_section .l_s_bottom .layer .item .text{
+			line-height: 28px; 
+			font-size: 16px;
+			color: rgba(255,255,255,.8);
+		}
+		.cy .col.absformid{
+			width: 45%;
+		}
+		.cy .mapBox{
+			z-index: 0;
+			width: 90%;
+		}
+		.cy .clock .digits{
+		    white-space: nowrap;
+		}
+		.cy .col.r_section .r_s_top,.cy .col.r_section .r_s_mid{
+			margin-bottom: 8%;
+			box-sizing: border-box;
+		}
+		.cy .col.r_section .r_s_mid .layer{
+			padding: 0 20px;
+			box-sizing: border-box;
+		}
+		.cy .col.r_section .r_s_top .layer .item,.cy .col.r_section .r_s_mid .layer .item .it-t{
+			position: absolute;
+			top: 22%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 12px;
+			white-space: nowrap;
+		}
+		.cy .col.r_section .r_s_top .layer .item,.cy .col.r_section .r_s_mid .layer .item .it-b{
+			position: absolute;
+			bottom: 10%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 12px;
+			white-space: nowrap;
+		}
+		.cy .col.r_section .r_s_top .layer .item,.cy .col.r_section .r_s_mid .layer .item{
+			position: relative;
+			width: 25%;
+			margin-top: 10%;
+			text-align:center;
+		}
+		.cy .col.r_section .r_s_top .layer .item>.div,.cy .col.r_section .r_s_mid .layer .item > div{
+			opacity: .8;
+		}
+
+		.cy .col.r_section .r_s_top .layer .item img,.cy .col.r_section .r_s_mid .layer .item img{
+			width: 80%;
+		}
+
+		.cy .col .table {
+			position: absolute;
+			top: 20%;	
+			right: 4%;
+			width: 50%;
+			background: rgba(0,0,0,.2);
+			margin-bottom: 1.5%;
+		}
+		.cy .col .table .item{
+			padding: 6px 0;
+		}
+		.cy .col .table .item:nth-child(even) {
+			background: rgba(255,255,255,.1);
+		}
+		.cy .col .table .item:nth-child(odd) .it{
+			color: #558fb9;
+		}
+		.cy .col .table .item .it{
+			width:  33.3%;
+			font-size: 14px;
+			text-align: center;
+			color: rgba(255,255,255,.7);
+		}
+		.cy .col .table .item .it.h{
+			color: #00ffff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container cy">
+		<div class="hd">
+			<img src="img/t3.png" alt="">
+		</div>
+		<div class="content dis-box align-items-top">
+			<div class="col col-3 absformid">
+				<div class="dis-box">
+					<div class="mapBox">
+						<img src="img/ditu.png" width="100%" />
+						<span class="chenguan" title="城关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="dongming" title="东明镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="duguanzhen" title="杜关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="fanlizhen" title="范里镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guandaokou" title="官道口镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guanpo"  title="官坡镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="hengtong" title="横涧乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="mutong" title="木桐乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="panhe" title="潘河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shahe" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shizi" title="狮子坪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuangkui" title="双槐树乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuanglong" title="双龙湾镇">
+							<div class="shuanglong2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="tanghe" title="汤河乡">
+							<div class="tanghe2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wayao" title="瓦窖沟">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wenyu" title="文峪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wulichuan" title="五里川镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="xujia" title="徐家湾">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="zhuyao" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col col-3 l_section">
+				<div class="wrap l_s_top">
+					<div class="dis-box item">
+						<div class="fs20 fw-b">全县共</div>				
+						<div class="clk_one"></div>
+						<div class="fs20 fw-b">个产业扶贫基地</div>	
+					</div>
+					<div class="dis-box item">
+						<div class="fs20 fw-b">全县共</div>				
+						<div class="clk_two"></div>
+						<div class="fs20 fw-b">家合作社</div>	
+					</div>
+					<div class="dis-box item">
+						<div class="fs20 fw-b">全县共</div>				
+						<div class="clk_three"></div>
+						<div class="fs20 fw-b">个产业扶贫车间</div>	
+					</div>			
+				</div>
+				<div class="wrap dis-box l_s_bottom">
+					<img src="img/31.png" alt="">
+					<div class="tit">卢氏县产业布局规划</div>
+					<div class="layer">
+						<div class="item">
+							<div class="fs18 c-main ta-c pb-10">北部地区</div>
+							<div class="text">爱仕达来看爱仕达 阿萨德飞阿斯顿发生的发生的费啊宋德福阿萨德飞阿萨德飞阿萨德飞 看</div>
+						</div>
+						<div class="item">
+							<div class="fs18 c-main ta-c pb-10">北部地区</div>
+							<div class="text">爱仕达来看爱仕达 阿萨德飞阿斯顿发生的发生的费啊宋德福阿萨德飞阿萨德飞阿萨德飞 看</div>
+						</div>
+						<div class="item">
+							<div class="fs18 c-main ta-c pb-10">北部地区</div>
+							<div class="text">爱仕达来看爱仕达 阿萨德飞阿斯顿发生的发生的费啊宋德福阿萨德飞阿萨德飞阿萨德飞 看</div>
+						</div>
+						<div class="item">
+							<div class="fs18 c-main ta-c pb-10">北部地区</div>
+							<div class="text">爱仕达来看爱仕达 阿萨德飞阿斯顿发生的发生的费啊宋德福阿萨德飞阿萨德飞阿萨德飞 看</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col mid"></div> <!--占位-->
+			<div class="col col-3 bigcol r_section mr-0">
+				<div class="wrap dis-box r_s_top">
+					<img src="img/32.png" alt="">
+					<div class="layer">
+						<div id="line"></div>
+					</div>
+				</div>
+				<div class="wrap dis-box r_s_mid">
+					<img src="img/33.png" alt="">
+					<div class="tit">卢氏县产业布局规划</div>
+					<div class="layer dis-box al">
+						<div class="item">
+							<img src="img/35.png" alt="">
+							<div class="it-t">龙头企业带动</div>
+							<div class="it-b">
+								<div class="c-main">每个产业</div>
+								<div><span class="fs18">2000</span>个</div>
+							</div>
+						</div>
+						<div class="item">
+							<img src="img/35.png" alt="">
+							<div class="it-t">龙头企业带动</div>
+							<div class="it-b">
+								<div class="c-main">每个产业</div>
+								<div><span class="fs18">120</span>个</div>
+							</div>
+						</div>
+						<div class="item">
+							<img src="img/35.png" alt="">
+							<div class="it-t">龙头企业带动</div>
+							<div class="it-b">
+								<div class="c-main">每个产业</div>
+								<div><span class="fs18">2</span>个</div>
+							</div>
+						</div>
+						<div class="item">
+							<img src="img/35.png" alt="">
+							<div class="it-t">龙头企业带动</div>
+							<div class="it-b">
+								<div class="c-main">每个产业</div>
+								<div><span class="fs18">1020</span>个</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="wrap dis-box r_s_bottom ">
+					<img src="img/34.png" alt="">
+					<!-- <div class="tit">卢氏县产业布局规划</div> -->
+					<div class="layer">
+						<div id="pie"></div>
+						<div class="table border firstbox">
+							<div class="item dis-box">
+								<div class="it h">产业</div>
+								<div class="it h">金额</div>
+								<div class="it h">占比</div>
+							</div>
+							<div class="item dis-box">
+								<div class="it">绿色农业</div>
+								<div class="it">108917.64</div>
+								<div class="it">88.4%</div>
+							</div>
+							<div class="item dis-box">
+								<div class="it">特色工业</div>
+								<div class="it">5150.178</div>
+								<div class="it">4.18%</div>
+							</div>
+							<div class="item dis-box">
+								<div class="it">现代服务业</div>
+								<div class="it">9142.182</div>
+								<div class="it">7.42%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/libs/vue.min.js"></script>
+<script src="js/libs/axios.min.js"></script>
+<script src="js/libs/jquery-2.1.4.min.js"></script>
+<script src="js/libs/echarts.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+	$(function(){
+		var line = echarts.init(document.getElementById('line'));
+		l_option = {
+			color: ['#b574ff', '#005aff', '#00ffff'],
+		    title: {
+		        text: '折线图堆叠',
+		        textStyle: {
+		        	fontSize: 22,
+		        	color: "#82c0eb"
+		        },
+		        top: 20,
+		        left: 20
+		    },
+		    tooltip: {
+		        trigger: 'axis'
+		    },
+		    legend: {
+		        data:[{
+	                name:'邮件营销',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'}
+	            },{
+	                name:'联盟广告',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'}
+	            },{
+	                name:'视频广告',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'}
+	            }],
+	            right: 20,
+	            top: 30
+		    },
+		    grid: {
+		    	top: '25%',
+		        left: '3%',
+		        right: '4%',
+		        bottom: '5%',
+		        containLabel: true
+		    },
+		    splitLine:{
+            	show: true,
+                lineStyle:{  
+                    color:'rgba(255,255,255,.3)'  
+                }  
+            },
+		    xAxis: {
+		        type: 'category',
+		        boundaryGap: false,
+		        data: ['周一','周二','周三','周四','周五','周六','周日'],
+		        axisLine: {
+	            	lineStyle:{  
+                        color:'rgba(255,255,255,.3)'  
+                    }  
+	            }
+		    },
+		     yAxis: {
+	            type: 'value',
+	            splitLine:{
+	            	show: true,
+                    lineStyle:{  
+                        color:'rgba(255,255,255,.3)'  
+                    }  
+	            },
+	            axisLine: {
+	            	lineStyle:{  
+                        color:'rgba(255,255,255,.3)'  
+                    }  
+	            },
+	            axisLabel: {
+                    textStyle: {
+                        color: 'rgba(255,255,255,.3)',
+
+                    }
+                }
+	        },
+		    
+		    series: [
+		        {
+		            name:'邮件营销',
+		            type:'line',
+		            stack: '总量',
+		        	lineStyle: {
+                        normal: {
+                            width: 4,
+                            color: '#b574ff'
+                        }
+                    },
+		            data:[120, 132, 101, 134, 90, 230, 210]
+		        },
+		        {
+		            name:'联盟广告',
+		            type:'line',
+		            stack: '总量',
+		        	lineStyle: {
+                        normal: {
+                            width: 4,
+                            color: '#005aff'
+                        }
+                    },
+		            data:[220, 182, 191, 234, 290, 330, 310]
+		        },
+		        {
+		            name:'视频广告',
+		            type:'line',
+		            stack: '总量',
+		        	lineStyle: {
+                        normal: {
+                            width: 4,
+                            color: '#00ffff'
+                        }
+                    },
+		            data:[150, 232, 201, 154, 190, 330, 410]
+		        }
+		    ]
+		};
+		line.setOption(l_option);
+
+		var pie = echarts.init(document.getElementById('pie'));
+		p_option = {
+		    title: {
+		        text: '折线图堆叠',
+		        textStyle: {
+		        	fontSize: 22,
+		        	color: "#82c0eb"
+		        },
+		        top: 20,
+		        left: 20
+		    },
+		    
+		    radar: [
+		        {
+		            indicator: [
+		                { text: '现代服务业' },
+		                { text: '绿色农业' },
+		                { text: '特色工业' },
+		            ],
+		            center: ['25%', '65%'],
+		            radius: 60,
+		            startAngle: 90,
+		            splitNumber: 4,
+		            shape: 'circle',
+		            name: {
+		                formatter:'{value}',
+		                textStyle: {
+		                    color:'#72ACD1'
+		                }
+		            },
+		            splitArea: {
+		                areaStyle: {
+		                    color: ['rgba(114, 172, 209, 0.1)',
+		                    'rgba(114, 172, 209, 0)', 'rgba(114, 172, 209, 0.1)',
+		                    'rgba(114, 172, 209, 0)', 'rgba(114, 172, 209, 0.1)'],
+		                    shadowColor: 'rgba(0, 0, 0, 0.3)',
+		                    shadowBlur: 10
+		                }
+		            },
+		            axisLine: {
+		                lineStyle: {
+		                    color: 'rgba(255, 255, 255, 0.5)'
+		                }
+		            },
+		            splitLine: {
+		                lineStyle: {
+		                    color: 'rgba(255, 255, 255, 0.5)'
+		                }
+		            }
+		        }
+		    ],
+		    series: [
+		        {
+		            name: '雷达图',
+		            type: 'radar',
+		            itemStyle: {
+		                emphasis: {
+		                    // color: 各异,
+		                    lineStyle: {
+		                        width: 4
+		                    }
+		                }
+		            },
+		            data: [
+		                {
+		                    value: [0, 5, 0],
+		                    name: '主导产业',
+		                    symbol: 'rect',	
+		                    symbolSize: 0,
+		                    lineStyle: {
+		                        normal: {
+		                            type: 'solid',
+		                            color: '#fff'
+		                        }
+		                    }
+		                }
+		            ]
+		        }
+		    ]
+		}
+		pie.setOption(p_option);
+
+		var FEer_number = {
+			numberArr : ['zero','one','two','three','four','five','six','seven','eight','nine'],
+
+			showNum (num, dom) {
+				var na = this.getNumArr(num) ;
+				var div_outer = document.createElement('div');  
+				var div_inner = document.createElement('div');  
+				div_outer.className = 'clock';  
+				div_inner.className = 'digits';  
+				for (var i = 0; i < na.length; i++) {
+					var temp = '<div class="zero">'
+									+'<span class="d1"></span>'
+									+'<span class="d2"></span>'
+									+'<span class="d3"></span>'
+									+'<span class="d4"></span>'
+									+'<span class="d5"></span>'
+									+'<span class="d6"></span>'
+									+'<span class="d7"></span>'
+								+'</div>'
+					$(div_inner).append(temp);  
+					$(div_outer).append(div_inner);  
+					dom.append(div_outer)
+				}
+			},
+
+			getNumArr (num){
+				var temp = num.toString()
+				var arr = temp.split('');
+				return arr;
+			},
+
+			changeNum (num,dom) {
+				this.showNum(num,dom);
+				var na = this.getNumArr(num);
+				var dom = $(dom).find('.digits > div');
+				var j = 0;
+				var _this = this;
+				for (var i = 0; i < dom.length; i++) {
+					(function(i) {
+						setTimeout(()=>{
+							$(dom[i]).attr('class',_this.numberArr[parseInt(na[i])])
+						},i*100)
+					})(i)
+				}
+			}
+		}
+
+		FEer_number.changeNum(350,$('.clk_one'))
+		FEer_number.changeNum(1000,$('.clk_two'))
+		FEer_number.changeNum(698,$('.clk_three'))
+	})
+
+</script>
+</html>	

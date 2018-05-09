@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>比例尺</title>
+</head>
+<body>
+        <script src="d3.min.js"></script>
+        <script>
+            var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
+            var min = d3.min(dataset);
+            var max = d3.max(dataset);
+            var linear = d3.scale.linear() //定义什么样的比例尺,线性比例尺
+                        .domain([min,max])  //定义域[0.9, 3.3]
+                        .range([0,300])  //值域
+            console.log(linear(2.8));
+        </script>
+</body>
+</html>

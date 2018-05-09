@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单图表用比例尺</title>
+</head>
+<body>
+    <svg>
+        <rect></rect>
+        <rect></rect>        
+    </svg>
+    <script src="d3.min.js"></script>
+    <script>
+        //创建画布svg,并设置宽高（横向柱状图）
+        var width = 600;
+        var height = 600;
+        var svg = d3.select("body").append('svg').attr('width',width).attr('height',height);
+        var dataset = [ 2.5 , 2.1 , 1.7 , 1.3 , 0.9 ];  //数据（表示矩形的宽度）
+        var linear = d3.scale.linear().domain([0,d3.max(dataset)]).range([0,300]);//比例尺换算
+        var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
+        svg.selectAll('rect') //获取矩形元素
+        .data(dataset) //将数据绑定
+        .enter()  //进入数据处理
+        .append('rect')  //为方式矩形元素不够先进行追加
+        .attr('x',20)  //矩形左上角横坐标一致
+        .attr('y',function(d,i){ //矩形左上角纵坐标变化（随空白区域以及矩形所占像素）
+            return i * rectHeight;
+        })
+        .attr('width',function(d){  //矩形的宽
+            return linear(d);
+        })
+        .attr('height',rectHeight-9)  //矩形的高（需要减去间隙9）
+        .attr("fill","skyblue");  //填充矩形颜色
+    </script>
+</body>
+</html>

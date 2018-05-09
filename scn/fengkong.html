@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.fk .one, .fk .two{
+			margin-bottom: 5%;
+		}
+		#chart1,#chart2,#chart3{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 90%;
+		}
+		#chart3 {
+			top: 60%;
+			height: 40%;
+		}
+		#line{
+			width: 100%;
+			height: 30%;
+		}
+		.fk .col .tit{
+			position: absolute;
+			left: 5%;
+			top: 10%;
+			color: #fff;
+			font-size: 22px;
+			font-weight: bold;
+			color: #82c0eb;
+			z-index: 9999;
+		}
+		
+		.fk .col .layerbox{
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			transform: translateY(-35%);
+		}
+		.fk .col .layerbox .item{
+			width: 33%;
+		}
+		.fk .col .layerbox .item .c {
+			position: relative;
+		}
+		.fk .col .layerbox .item .c .num{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #2ae7e5;
+		}
+		.fk .col .layerbox .item .c img{
+			max-width: 100%;
+		}
+		.fk .col .layerbox .item .t{
+			color: #82c0eb;
+			font-size: 14px;
+		}
+		.fk .col.bigcol .tit{
+			top: 4%;
+		}
+		.fk .col.bigcol .catebox{
+			position: absolute;
+			padding: 0 5%;
+			width: 100%;
+			height: 40%;
+			top: 10%;
+			box-sizing: border-box;
+		}
+		.fk .col.bigcol .catebox .item{
+			width: 49%;
+			height: 50%;
+			background: rgba(255,255,255,.1);
+		}
+		.fk .col.bigcol .catebox .item{
+			margin: 0 2% 2% 0;
+
+		}
+		.fk .col.bigcol .catebox .item:nth-child(even){
+			margin-right: 0;
+		}
+		.fk .col.bigcol .catebox .item .t{
+			color: #fff;
+			font-size: 16px;
+		}
+		#circle1,#circle2,#circle3,#circle4{
+			width: 100%;
+			height: 90%;
+			padding-left:5%;
+			box-sizing: border-box;
+		}
+		.fk .col .infobox{
+			width: 45%
+		}
+		.fk .col .infobox .item{
+			position: relative;
+		}
+		.fk .col .infobox .item img{
+			width: 100%;
+		}
+		.fk .col .infobox .item .lay{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.fk .col .infobox .item .lay .t{
+			position: relative;
+			padding-top: 5%;
+			padding-left: 10%;
+		}
+		.fk .col .infobox .item .lay .cnt{
+			width: 100%;
+			padding: 5% 10%;
+			box-sizing: border-box;
+		}
+		.fk .col .infobox .item .lay .c{
+			width: 50%;
+			margin-bottom: 5%;
+			font-size: 14px;
+		}
+		.fk .col .infobox .item .lay .c .h{
+			padding-left: 20%;
+		}
+		.fk .col .infobox .item .lay .linebar{
+			position: absolute;
+			top: 25%;
+			left: 40%;
+			width: 4%;
+			height: 65%;
+			background: #81f29c;
+		}
+		.fk .col .infobox .item .lay .linebar .innerbar{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 25%;
+			width: 100%;
+			background: #0d8ce4;
+		}
+		.fk .col .infobox .item .lay .linebar .left{
+			position: absolute;
+			left: -10px;
+			transform: translateX(-100%);
+			top: 0;
+			width: 100px;
+			text-align: right;
+			font-size: 14px;
+		}
+		.fk .col .infobox .item .lay .linebar .right{
+			position: absolute;
+			right: -10px;
+			transform: translateX(100%);
+			bottom: 0;
+			width: 100px;
+			text-align: left;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container fk">
+		<div class="hd">
+			<img src="img/t2.png" alt="">
+		</div>
+		<div class="content dis-box align-items-top">
+			<div class="col col-3">
+				<div class="wrap dis-box one">
+					<img src="img/11.png" alt="">
+					<div class="tit">全县2017年贷款走势</div>
+					<div id="chart1"></div>
+				</div>
+				<div class="wrap dis-box two">
+					<img src="img/12.png" alt="">
+					<div class="tit">全县2017年贷款走势</div>
+					<div class="layerbox dis-box justify-content-around">
+						<div class="item dis-box flex-direction-column">
+							<div class="c ta-c">
+								<img src="img/c1.png" alt="">
+								<div class="num dis-box flex-direction-column">
+									<span class="fs24">7.8</span>
+									<span class="fs14">%</span>
+								</div>
+							</div>
+							<div class="t">生态旅游/电子商务</div>
+						</div>
+						<div class="item dis-box flex-direction-column">
+							<div class="c ta-c">
+								<img src="img/c2.png" alt="">
+								<div class="num dis-box flex-direction-column">
+									<span class="fs24">20.8</span>
+									<span class="fs14">%</span>
+								</div>
+							</div>
+							<div class="t">特色工业</div>
+						</div>
+						<div class="item dis-box flex-direction-column">
+							<div class="c ta-c">
+								<img src="img/c3.png" alt="">
+								<div class="num dis-box flex-direction-column">
+									<span class="fs24">15.3</span>
+									<span class="fs14">%</span>
+								</div>
+							</div>
+							<div class="t">绿色农业</div>
+						</div>
+					</div>
+				</div>
+				<div class="wrap dis-box">
+					<div class="tit">垫付主体分类</div>
+					<img src="img/13.png" alt="">
+					<div id="chart2"></div>
+				</div>
+			</div>
+			<div class="col mid"></div> <!--占位-->
+			<div class="col col-3 absformid">
+				<div class="dis-box justify-content-around">
+					<div>
+						<div class="fs18 ta-c pb-10">正常还款金额</div>
+						<div class="clk_one"></div>
+						<div class="c-main fs16 ta-c pt-10">正常率：15.3%</div>
+					</div>
+					<div>
+						<div class="fs18 ta-c pb-10">正常还款金额</div>
+						<div class="clk_two"></div>
+						<div class="c-main fs16 ta-c pt-10">逾期率：15.3%</div>
+					</div>
+					<div>
+						<div class="fs18 ta-c pb-10">正常还款金额</div>
+						<div class="clk_three"></div>
+						<div class="c-main fs16 ta-c pt-10">不良率：15.3%</div>
+					</div>
+				</div>
+				<div class="dis-box">
+					<div class="mapBox">
+						<img src="img/ditu.png" width="100%" />
+						<span class="chenguan" title="城关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="dongming" title="东明镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="duguanzhen" title="杜关镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="fanlizhen" title="范里镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guandaokou" title="官道口镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="guanpo"  title="官坡镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="hengtong" title="横涧乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="mutong" title="木桐乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="panhe" title="潘河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shahe" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shizi" title="狮子坪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuangkui" title="双槐树乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="shuanglong" title="双龙湾镇">
+							<div class="shuanglong2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="tanghe" title="汤河乡">
+							<div class="tanghe2"></div>
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wayao" title="瓦窖沟">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wenyu" title="文峪乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="wulichuan" title="五里川镇">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="xujia" title="徐家湾">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<span class="zhuyao" title="沙河乡">
+							<div class="anmit">
+								<div class="dot"></div>  
+								<div class="pulse"></div>  
+							</div>
+						</span>
+						<div class="information">
+							<h4>沙河乡</h4>
+							<p>贷款总金额：103000 元</p>
+							<p>合作社贷：300 家</p>
+							<p>农户贷：2000 户</p>
+							<p>企业贷：100 家</p>
+						</div>
+					</div>
+					<div class="infobox">
+						<div class="item dis-box">
+							<img src="img/15.png" alt="">
+							<div class="lay">
+								<div class="t c-main">逾期时间比例</div>
+								<div class="cnt dis-box flex-wrap">
+									<div class="c">逾期1-3天 10%</div>
+									<div class="c">逾期1-3天 10%</div>
+									<div class="c">逾期1-3天 10%</div>
+									<div class="c">逾期1-3天 10%</div>
+									<div class="c">逾期1-3天 10%</div>
+								</div>
+							</div>
+						</div>
+						<div class="item dis-box">
+							<img src="img/16.png" alt="">
+							<div class="lay">
+								<div class="cnt">
+									<div class="clk_four scale"></div>
+									<div class="h fs14 mb-10">正在催收金额（元）</div>
+									<div class="clk_five scale"></div>
+									<div class="h fs14 mb-10">历史违约金额（元）</div>
+								</div>
+							</div>
+						</div>
+						<div class="item dis-box">
+							<img src="img/17.png" alt="">
+							<div class="lay">
+								<div class="t c-main">政府贴息数据分析</div>
+								<div class="linebar">
+									<div class="innerbar"></div>
+									<div class="left">
+										<div class="mb-5">企业贴息25% </div>
+										<div class="mb-5">214户</div>
+										<div class="mb-5">2.5w</div>
+									</div>
+									<div class="right">
+										<div class="mb-5">企业贴息25% </div>
+										<div class="mb-5">214户</div>
+										<div class="">2.5w</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="line"></div>
+			</div>
+			<div class="col col-3 bigcol mr-0">
+				<div class="wrap dis-box">
+					<div class="tit">垫付主体分类</div>
+					<img src="img/14.png" alt="">
+					<div class="catebox dis-box flex-wrap">
+						<div class="item">
+							<div class="t">“四位一体”共担模式</div>
+							<div id="circle1"></div>
+						</div>
+						<div class="item">
+							<div class="t">“政银保”合作模式</div>
+							<div id="circle2"></div>
+						</div>
+						<div class="item">
+							<div class="t">“政银企”互助模式</div>
+							<div id="circle3"></div>
+						</div>
+						<div class="item">
+							<div class="t">“政融保”互惠模式</div>
+							<div id="circle4"></div>
+						</div>
+					</div>
+					<div id="chart3"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<script src="js/libs/vue.min.js"></script>
+<script src="js/libs/axios.min.js"></script>
+<script src="js/libs/jquery-2.1.4.min.js"></script>
+<script src="js/libs/echarts.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+	$(function(){
+		var chart1 = echarts.init(document.getElementById('chart1'));
+		var posList = [
+		    'left', 'right', 'top', 'bottom',
+		    'inside',
+		    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+		    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+		];
+		chart1.configParameters = {
+		    rotate: {
+		        min: -90,
+		        max: 90
+		    },
+		    align: {
+		        options: {
+		            left: 'left',
+		            center: 'center',
+		            right: 'right'
+		        }
+		    },
+		    verticalAlign: {
+		        options: {
+		            top: 'top',
+		            middle: 'middle',
+		            bottom: 'bottom'
+		        }
+		    },
+		    position: {
+		        options: echarts.util.reduce(posList, function (map, pos) {
+		            map[pos] = pos;
+		            return map;
+		        }, {})
+		    },
+		    distance: {
+		        min: 0,
+		        max: 100
+		    } 
+		}
+		chart1.config = {
+		    rotate: 90,
+		    align: 'left',
+		    verticalAlign: 'middle',
+		    position: 'insideBottom',
+		    distance: 15,
+		    onChange: function () {
+		        var labelOption = {
+		            normal: {
+		                rotate: chart1.config.rotate,
+		                align: chart1.config.align,
+		                verticalAlign: chart1.config.verticalAlign,
+		                position: chart1.config.position,
+		                distance: chart1.config.distance
+		            }
+		        };
+		        chart1.setOption({
+		            series: [{
+		                label: labelOption
+		            }, {
+		                label: labelOption
+		            }, {
+		                label: labelOption
+		            }, {
+		                label: labelOption
+		            }]
+		        });
+		    }
+		};
+		var labelOption = {
+		    normal: {
+		        show: false,
+		        position: chart1.config.position,
+		        distance: chart1.config.distance,
+		        align: chart1.config.align,
+		        verticalAlign: chart1.config.verticalAlign,
+		        rotate: chart1.config.rotate,
+		        formatter: '{c}  {name|{a}}',
+		        fontSize: 16,
+		        rich: {
+		            name: {
+		                textBorderColor: '#fff'
+		            }
+		        }
+		    }
+		};
+		option1 = {
+		    color: ['#00ffff', '#0d8ce4', '#005aff', '#81f29c'],
+		    tooltip: {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'shadow'
+		        }
+		    },
+		    legend: {
+		        data: [{
+	                name:'正常还款',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期未还',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'不良贷款',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期催回',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+		        itemWidth: 12,
+		        itemHeight: 12,
+		        top: 0,
+		        right: 50,
+		        width: 200,
+		         textStyle:{
+	               fontSize:14,
+	               color:'#fff'
+	           }	
+	   		},
+		    calculable: true,
+		    xAxis: [
+		        {
+		            type: 'category',
+		            axisTick: {show: false},
+		            data: ['2012', '2013', '2014', '2015', '2016'],	
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+	                    }
+	                }
+		        }
+		    ],
+		    yAxis: [
+		        {
+		            type: 'value',
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+
+	                    }
+	                }
+		        }
+		    ],
+		    series: [
+		        {
+		            name: '正常还款',
+		            type: 'bar',
+		            barGap: 1,
+		            barWidth : 10,
+		            label: labelOption,
+		            data: [320, 332, 301, 334]
+		        },
+		        {
+		            name: '逾期未还',
+		            type: 'bar',
+		            barGap: 1,
+		            barWidth : 10,
+		            label: labelOption,
+		            data: [220, 182, 191, 234]
+		        },
+		        {
+		            name: '不良贷款',
+		            type: 'bar',
+		            barGap: 1,
+		            barWidth : 10,
+		            label: labelOption,
+		            data: [150, 232, 201, 154]
+		        },
+		        {
+		            name: '逾期催回',
+		            type: 'bar',
+		            barGap: 1,
+		            barWidth : 10,
+		            label: labelOption,
+		            data: [98, 77, 101, 99]
+		        }
+		    ]
+		};
+
+		var chart2 = echarts.init(document.getElementById('chart2'));
+		option2 = {
+		    color: ['#00ffff','#0d8ce4'],
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        }
+		    },
+		    legend: {
+		        data:[{
+	                name:'垫付占比',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'金额',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		        top: 0,
+		        right: 50,
+		        width: 200,
+		        textStyle:{
+	               fontSize:14,
+	               color:'#fff'
+	           }	
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            splitLine:{
+		            	show: false,
+		            },
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'category',
+		            axisTick : {show: false},
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{
+	                        color:'rgba(255,255,255,.3)'  
+	                    }
+		            },
+		            data : ['县政府','周二','周三','周四','周五','周六','周日']
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'垫付占比',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true
+		                }
+		            },
+		            data:[320, 302, 341, 374, 390, 450]
+		        },
+		        {
+		            name:'金额',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true,
+		                    position: 'left'
+		                }
+		            },
+		            data:[-120, -132, -101, -134, -190, -230]
+		        }
+		    ]
+		};
+
+		var chart3 = echarts.init(document.getElementById('chart3'));
+		option3 = {
+		    color: ['#00ffff','#0d8ce4'],
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        }
+		    },
+		    legend: {
+		        data:[{
+	                name:'垫付占比',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'金额',
+	                icon : 'circle',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		        top: 0,
+		        right: 50,
+		        width: 200,
+		         textStyle:{
+	               fontSize:14,
+	               color:'#fff'
+	           }	
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            splitLine:{
+		            	show: false,
+		            },
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'category',
+		            axisTick : {show: false},
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            data : ['县政府','周二','周三','周四','周五','周六','周日']
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'垫付占比',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true
+		                }
+		            },
+		            data:[320, 302, 341, 374, 390, 450]
+		        },
+		        {
+		            name:'金额',
+		            type:'bar',
+		            stack: '总量',
+		            barWidth : 10,
+		            label: {
+		                normal: {
+		                    show: true,
+		                    position: 'left'
+		                }
+		            },
+		            data:[-120, -132, -101, -134, -190, -230]
+		        }
+		    ]
+		};
+		
+		var circle1 = echarts.init(document.getElementById('circle1'));
+		var circle2 = echarts.init(document.getElementById('circle2'));
+		var circle3 = echarts.init(document.getElementById('circle3'));
+		var circle4 = echarts.init(document.getElementById('circle4'));
+		c_option1 = {
+			color:['#00ffff','#0d8ce4','#005aff'],
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    legend: {
+		        orient: 'vertical',
+		        x: 'left',
+		        top: 50,
+		        data:[{
+	                name:'正常',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'不良',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		    },
+		    series: [
+		        {
+		            type:'pie',
+		            radius: ['50%', '70%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: false,
+		                    position: 'center'
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '12',
+		                        fontWeight: ''
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            data:[
+		                {value:335, name:'正常'},
+		                {value:310, name:'逾期'},
+		                {value:234, name:'不良'}
+		            ]
+		        }
+		    ]
+		};
+		c_option2 = {
+			color:['#00ffff','#0d8ce4','#005aff'],
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    legend: {
+		        orient: 'vertical',
+		        x: 'left',
+		        top: 50,
+		        data:[{
+	                name:'正常',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'不良',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		    },
+		    series: [
+		        {
+		            type:'pie',
+		            radius: ['50%', '70%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: false,
+		                    position: 'center'
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '12',
+		                        fontWeight: ''
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            data:[
+		                {value:335, name:'正常'},
+		                {value:310, name:'逾期'},
+		                {value:234, name:'不良'},
+		            ]
+		        }
+		    ]
+		};
+		c_option3 = {
+			color:['#00ffff','#0d8ce4','#005aff'],
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    legend: {
+		        orient: 'vertical',
+		        x: 'left',
+		        top: 50,
+		        data:[{
+	                name:'正常',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'不良',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		    },
+		    series: [
+		        {
+		            type:'pie',
+		            radius: ['50%', '70%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: false,
+		                    position: 'center'
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '12',
+		                        fontWeight: ''
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            data:[
+		                {value:335, name:'正常'},
+		                {value:310, name:'逾期'},
+		                {value:234, name:'不良'},
+		            ]
+		        }
+		    ]
+		};
+		c_option4 = {
+			color:['#00ffff','#0d8ce4','#005aff'],
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+		    legend: {
+		        orient: 'vertical',
+		        x: 'left',
+		        top: 50,
+		        data:[{
+	                name:'正常',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'逾期',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            },{
+	                name:'不良',
+	                icon : 'bar',
+	                textStyle:{fontSize:12, color:'white'},
+	            }],
+	            itemWidth: 12,
+		        itemHeight: 12,
+		    },
+		    series: [
+		        {
+		            type:'pie',
+		            radius: ['50%', '70%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: false,
+		                    position: 'center'
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '12',
+		                        fontWeight: ''
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            data:[
+		                {value:335, name:'正常'},
+		                {value:310, name:'逾期'},
+		                {value:234, name:'不良'}
+		            ]
+		        }
+		    ]
+		};
+
+		line = echarts.init(document.getElementById('line'))
+		l_option = {
+		    title: {
+		        text: '不良率排行',
+		        textStyle:{
+			        //文字颜色
+			        color:'#00ffff',
+			        fontWeight:'bold',
+			    }
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'cross',
+		            label: {
+		                backgroundColor: '#fff'
+		            }
+		        }
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+
+	                    }
+	                },
+		            data : ['周一','周二','周三','周四','周五','周六','周日']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            splitLine:{
+		            	show: true,
+	                    lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            }, 
+		            axisLine: {
+		            	lineStyle:{  
+	                        color:'rgba(255,255,255,.3)'  
+	                    }  
+		            },
+		            axisLabel: {
+	                    textStyle: {
+	                        color: 'rgba(255,255,255,.3)',
+
+	                    }
+	                }
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'邮件营销',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {
+		            	normal: {
+							color: 'rgba(0, 255, 255, .2)',
+		            	}
+		        	},
+		        	lineStyle: {
+                        normal: {
+                            width: 4,
+                            color:'rgba(0, 255, 255, .5)' 
+                        }
+                    },   
+		            data:[120, 132, 101, 134, 90, 230, 210]
+		        }
+		    ]
+		};
+
+
+		setTimeout(function(){
+			chart1.setOption(option1);
+		},200)
+
+		setTimeout(function(){
+			chart2.setOption(option2);
+		},500)
+			
+		setTimeout(function(){
+			circle1.setOption(c_option1);
+			circle2.setOption(c_option2);
+			circle3.setOption(c_option3);
+			circle4.setOption(c_option4);
+		},1000)
+		setTimeout(function(){
+			line.setOption(l_option);
+		},1200)
+		setTimeout(function(){
+			chart3.setOption(option3);
+		},800)
+
+		//地图初始化
+		$(".mapBox").on("mouseover","span",function(){
+			var bg = $(this).attr('class');
+			var title = $(this).attr('title');
+			$('.mapBox img').attr('src','img/'+bg+'.png')
+			$(".information h4").html(title)
+			$(".information").show()
+		})
+
+
+		var FEer_number = {
+			numberArr : ['zero','one','two','three','four','five','six','seven','eight','nine'],
+
+			showNum (num, dom) {
+				var na = this.getNumArr(num) ;
+				var div_outer = document.createElement('div');  
+				var div_inner = document.createElement('div');  
+				div_outer.className = 'clock';  
+				div_inner.className = 'digits';  
+				for (var i = 0; i < na.length; i++) {
+					var temp = '<div class="zero">'
+									+'<span class="d1"></span>'
+									+'<span class="d2"></span>'
+									+'<span class="d3"></span>'
+									+'<span class="d4"></span>'
+									+'<span class="d5"></span>'
+									+'<span class="d6"></span>'
+									+'<span class="d7"></span>'
+								+'</div>'
+					$(div_inner).append(temp);  
+					$(div_outer).append(div_inner);  
+					dom.append(div_outer)
+				}
+			},
+
+			getNumArr (num){
+				var temp = num.toString()
+				var arr = temp.split('');
+				return arr;
+			},
+
+			changeNum (num,dom) {
+				this.showNum(num,dom);
+				var na = this.getNumArr(num);
+				var dom = $(dom).find('.digits > div');
+				var j = 0;
+				var _this = this;
+				for (var i = 0; i < dom.length; i++) {
+					(function(i) {
+						setTimeout(()=>{
+							$(dom[i]).attr('class',_this.numberArr[parseInt(na[i])])
+						},i*80)
+					})(i)
+				}
+			}
+		}
+
+		FEer_number.changeNum(5645,$('.clk_one'))
+		FEer_number.changeNum(856452,$('.clk_two'))
+		FEer_number.changeNum(85412,$('.clk_three'))
+		FEer_number.changeNum(85412,$('.clk_four'))
+		FEer_number.changeNum(85412,$('.clk_five'))
+	})
+</script>
+</html>	
